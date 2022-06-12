@@ -599,7 +599,7 @@ JZ=1
       let check = jpg10.classList
      
      
-      //jpg0.removeEventListener("click", show0)
+
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       //console.log(jpg4)
       obnul()
@@ -757,7 +757,7 @@ JZ=1
       let check = jpg15.classList
     
       
-      //jpg0.removeEventListener("click", show0)
+      
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
          obnul()
       j15 = 1
