@@ -4,10 +4,101 @@ let JZ=0
 let turn = 1
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
+let btnLang = document.getElementById("btnLang")
 let span = document.getElementsByClassName("close")[0]
+let information1=document.querySelector(".information1")
+let information2=document.querySelector(".information2")
+let information3=document.querySelector(".information3")
+let information4=document.querySelector(".information4")
+let rules = document.querySelector(".rules")
+let start = document.querySelector(".footer__start")
+let author = document.querySelector(".footer__author")
+let timer1=document.querySelector(".timer1")
+let timer2=document.querySelector(".timer2")
+
+let time1 = 0;
+let time2 = 0;
+
+information1.style.display = "flex"
 
 const body = document.querySelector("body")
 const container = document.querySelector(".container")
+let isRu = true
+
+btnLang.onclick = function (){
+start.style.display = "none"
+author.style.display = "none"
+   if(isRu==false){
+   isRu = true
+information1.style.display = "none"
+information2.style.display = "none"
+information3.style.display = "none"
+information4.style.display = "none"
+information1=document.querySelector(".information1")
+information2=document.querySelector(".information2")
+information3=document.querySelector(".information3")
+information4=document.querySelector(".information4")
+information1.style.display = "flex"
+btn.style.display = "none"
+rules.style.display = "none"
+btn = document.getElementById("myBtn")
+rules = document.querySelector(".rules")
+btn.style.display = "inline"
+rules.style.display = "inline"
+btn.onclick = function (){
+   modal.style.display = "block"
+}
+start = document.querySelector(".footer__start")
+author = document.querySelector(".footer__author")
+start.style.display = "inline"
+author.style.display = "inline"
+   }
+   else{
+      isRu=false
+information1.style.display = "none"
+information2.style.display = "none"
+information3.style.display = "none"
+information4.style.display = "none"
+information1=document.querySelector(".information1eng")
+information2=document.querySelector(".information2eng")
+information3=document.querySelector(".information3eng")
+information4=document.querySelector(".information4eng")
+information1.style.display = "flex"
+btn.style.display = "none"
+rules.style.display = "none"
+btn = document.getElementById("myBtnEng")
+rules = document.querySelector(".rulesEng")
+btn.style.display = "inline"
+rules.style.display = "inline"
+btn.onclick = function (){
+   modal.style.display = "block"
+}
+
+start = document.querySelector(".footer__startEng")
+author = document.querySelector(".footer__authorEng")
+start.style.display = "inline"
+author.style.display = "inline"
+   }
+}
+
+
+let times1
+let times2
+
+ function Times1() {
+   times1 = setInterval(function(){
+      ++time1;
+      timer1.innerHTML = time1;
+      console.log(time1)
+   }, 1000);
+ }
+ function Times2() {
+   times2 = setInterval(function(){
+      ++time2;
+      timer2.innerHTML = time2;
+      console.log(time2)
+   }, 1000);
+ }
 
 btn.onclick = function (){
    modal.style.display = "block"
@@ -65,7 +156,11 @@ fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
 fishkas2[0].style.border= "5px solid Blue"
 
 function delete1(){
+   clearInterval(times1)
+   Times2()
    d++ 
+   information2.style.display = "none" 
+   information1.style.display = "flex"
    for(i=0; i<8; i++){
       if(d==i){
          fishkas1[i].remove()
@@ -77,7 +172,11 @@ function delete1(){
 }
 
 function delete2(){
+   clearInterval(times2)
+   Times1();
    d2++
+   information1.style.display = "none" 
+   information2.style.display = "flex" 
    for(i=0; i<8; i++){
       if(d2==i){
          fishkas2[i].remove()
@@ -173,17 +272,19 @@ JZ=1
       if (turn % 2 == 0){
          jpg[0].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[0].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -202,17 +303,19 @@ JZ=1
       if (turn % 2 == 0){
          jpg[1].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[1].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -231,17 +334,19 @@ JZ=1
       if (turn % 2 == 0){
          jpg[2].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[2].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -259,17 +364,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[3].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[3].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -287,17 +393,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[4].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[4].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -315,17 +422,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[5].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[5].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -343,17 +451,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[6].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[6].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -371,17 +480,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[7].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[7].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -399,17 +509,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[8].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[8].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -427,17 +538,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[9].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[9].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -458,17 +570,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[10].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[10].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -486,17 +599,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[11].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[11].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -515,17 +629,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[12].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[12].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -543,17 +658,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[13].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[13].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -571,17 +687,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[14].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[14].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -599,17 +716,18 @@ JZ=1
       if (turn % 2 == 0){
          jpg[15].classList.add("click1pl")
          turn++
-         checkFinish()
          delete1()
+         checkFinish()
          }
          else {         
          jpg[15].classList.add("click2pl")
          turn++
-         checkFinish()
          delete2()
+         checkFinish()
          }}
       else{
-         alert("Ваш ход не соответсвует правилам")
+                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         else alert("Your move doesn't follow the rules")
       }
    }}
 
@@ -650,11 +768,27 @@ function finishend() {
    if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3] || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7] || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11] || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15] || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12] || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13] || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14] || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15] || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12] || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15] || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5] || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6] || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7] || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9] || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10] || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11] || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13] || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14] || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15])
    {
       if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3]&&c[0]==1 || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7]&&c[4]==1 || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11]&&c[8]==1 || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15]&&c[12]==1 || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12]&&c[0]==1 || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13]&&c[1]==1 || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14]&&c[2]==1 || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15]&&c[3]==1 || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12]&&c[3]==1 || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15]&&c[0]==1 || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5]&&c[0]==1 || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6]&&c[1]==1 || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7]&&c[2]==1 || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9]&&c[4]==1 || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10]&&c[5]==1 || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11]&&c[6]==1 || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13]&&c[8]==1 || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14]&&c[9]==1 || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15]&&c[10]==1){
-        alert("выиграл второй игрок(Фиолетовые фишки)") 
+         if(isRu==true){
+            alert("Выиграл второй игрок(Фиолетовые фишки)")
+         }
+         if(isRu==false){
+            alert("Second player wins(Purple chips)")
+         }
+        information1.style.display = "none" 
+      information2.style.display = "none" 
+      information4.style.display = "flex" 
       }
       else{
-        alert("выиграл первый игрок(Золотые фишки)") 
+         if(isRu==true){
+            alert("Выиграл первый игрок(Золотые фишки)")
+         }
+         if(isRu==false){
+            alert("First player wins(Golden chips)")
+         }
+        information1.style.display = "none" 
+      information2.style.display = "none" 
+        information3.style.display = "flex"
       } 
-      obnul()          
+      obnul() 
    }   
 }

@@ -7,7 +7,10 @@
     <title>Okaiya</title>
 </head>
 <body>
+    <button id="btnLang" class="btnLang"> Rus <i class="fa-solid fa-arrows-rotate"></i> Eng </button>
+
         <button id="myBtn" class="myBtn">ПРАВИЛА ИГРЫ</button>
+        <button id="myBtnEng" class="myBtnEng">Rules of the game</button>
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close"><i class="fa-solid fa-clover"></i></span>
@@ -32,16 +35,49 @@
                     <p>2)Объект(статуя, жаба, машина, цветок)</p>
                     <p>Второй ход начинается с анализа первой карточки, которую выбрали. Если на карточке изображена статуя на траве, то следующей вы можете вытащить лишь карту на которой также изображена статуя или карточку на которой изображена трава. Следующий ход аналогичен</p>
             </div>
+            <div class="rulesEng">First to win
+                fulfill one of the three victory conditions:</i>
+                <ul>
+                <li>Lay out a vertical, horizontal or diagonal row of four tokens of your color on the game board.</li>
+                <li>Place a 2x2 square out of the four tokens of your
+                colors on the playing field.</li>
+                <li>Block all moves to the opponent so that he has no opportunity to continue the game.</li>
+            </ul>
+            <p>Choose who will go first. Later, if you
+                play several times in a row, the loser goes first
+                in the previous game.</p>
+                <p>The player takes a card (of his choice) from the playing field and
+                one of its tokens places it in its place. During the very first move, he can only take a card from the edge of the field (then
+                is in the first round he cannot take any of those four,
+                that are located in the center of the field). The card he removed from
+                field, determines the rules for further actions of the second player.</p>
+                <p>Each card has two properties:</p>
+                <p>1)Background(grass, water, sky, space)</p>
+                <p>2)Object(statue, toad, car, flower)</p>
+                <p>The second turn begins with the analysis of the first card that was chosen. If the card shows a statue on the grass, then the next you can draw is only a card that also shows a statue or a card that shows grass. The next move is similar</p>
+        </div>
             </div>
         </div>
     
-    <div class="container">
-       
-    </div>
+    <div class="container"></div>
+
+        <div class="timer1">0</div>
+        <div class="timer2">0</div>
+
+    <div class="information1">Сейчас ходит: первый игрок(<p class="gold">Золотые фишки</p>)</div>
+    <div class="information1eng">Active now: first player(<p class="gold">Golden chips</p>)</div>
+    <div class="information2">Сейчас ходит: второй игрок(<p class="purple">Фиолетовые фишки</p>)</div>
+    <div class="information2eng">Active now: second player(<p class="purple">Purple chips</p>)</div>
+    <div class="information3">Победил первый игрок(<p class="gold">Золотые фишки</p>)</div>
+    <div class="information3eng">First player wins(<p class="gold">Golden chips</p>)</div>
+    <div class="information4">Победил второй игрок(<p class="purple">Фиолетовые фишки</p>)</div>
+    <div class="information4eng">Second player wins(<p class="purple">Purple chips</p>)</div>
     <footer>
-       <div>Сайт Разработан:</div>
+       <div class="footer__start">Сайт Разработан:</div>
+       <div class="footer__startEng">Website Designed by:</div>
        <a href="https://vk.com/markovsky02" class="socSet" target="_blank"><i class="fa-brands fa-vk fa-5x"></i></a>
-       <div>Марковский Павел</div> 
+       <div class="footer__author">Марковский Павел</div>
+       <div class="footer__authorEng">Markovsky Pavel</div>  
     </footer>
     
 <script src="app.js"></script>
