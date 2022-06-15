@@ -15,6 +15,8 @@ let start = document.querySelector(".footer__start")
 let author = document.querySelector(".footer__author")
 let timer1=document.querySelector(".timer1")
 let timer2=document.querySelector(".timer2")
+const mediaQuery = window.matchMedia('(max-width: 768px)')
+
 
 let time1 = 0;
 let time2 = 0;
@@ -89,14 +91,12 @@ let times2
    times1 = setInterval(function(){
       ++time1;
       timer1.innerHTML = time1;
-      console.log(time1)
    }, 1000);
  }
  function Times2() {
    times2 = setInterval(function(){
       ++time2;
       timer2.innerHTML = time2;
-      console.log(time2)
    }, 1000);
  }
 
@@ -130,23 +130,46 @@ let fishkas2 = []
 
  
 for(i=0; i<8; i++){
-const fishka = document.createElement("div")
+   const fishka = document.createElement("div")
+   if (mediaQuery.matches) {
+  // const fishka = document.createElement("div")
+   fishka.style.top = ("75%")
+   fishka.style.left = (`${15*i+2}px`)
+   fishkas1.push(fishka)  
+   fishka.classList.add("fishka1")
+   body.appendChild(fishka) 
+   console.log("adada")
+       }
+   else{
+     // const fishka = document.createElement("div")
 fishka.style.top = (`${30*i+200}px`)
 fishka.style.left = (`${30*i+200}px`)
 fishkas1.push(fishka)  
-//fishkas1[length].style.backgroundColor = "red"
-//fishkas1[length].style.boxShadow = `0 0 2px red, 0 0 10px red`
 fishka.classList.add("fishka1")
 body.appendChild(fishka)
+   }
+
 }
 for(i=0; i<8; i++){
    const fishka = document.createElement("div")
-   fishka.style.top = (`${30*i+200}px`)
-   fishka.style.right = (`${30*i+200}px`)
-   fishkas2.push(fishka)  
-   fishka.classList.add("fishka2")
-   body.appendChild(fishka)
+   if (mediaQuery.matches) {
+      // const fishka = document.createElement("div")
+       fishka.style.top = ("75%")
+       fishka.style.left = (`${15*i+220}px`)
+       fishkas2.push(fishka)  
+       fishka.classList.add("fishka2")
+       body.appendChild(fishka) 
+       console.log("adada")
+           }
+       else{
+         // const fishka = document.createElement("div")
+    fishka.style.top = (`${30*i+200}px`)
+    fishka.style.right = (`${30*i+200}px`)
+    fishkas2.push(fishka)  
+    fishka.classList.add("fishka2")
+    body.appendChild(fishka)
    }
+}
 
 let d = -1
 let d2 = -1
