@@ -17,6 +17,8 @@ let timer1=document.querySelector(".timer1")
 let timer2=document.querySelector(".timer2")
 const mediaQuery = window.matchMedia('(max-width: 768px)')
 
+let times1
+let times2
 
 let time1 = 0;
 let time2 = 0;
@@ -55,7 +57,7 @@ author = document.querySelector(".footer__author")
 start.style.display = "inline"
 author.style.display = "inline"
    }
-   else{
+   else{w
       isRu=false
 information1.style.display = "none"
 information2.style.display = "none"
@@ -83,9 +85,6 @@ author.style.display = "inline"
    }
 }
 
-
-let times1
-let times2
 
  function Times1() {
    times1 = setInterval(function(){
