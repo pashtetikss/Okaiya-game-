@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .container{
     padding: 0;
     margin-left: auto;
@@ -13,218 +17,106 @@ border: 5px solid rgb(41, 247, 178);
 border-radius: 10px;
 background-color: antiquewhite;
 }
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(157, 236, 236);
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  height: 100px;
+  font-size: 20px;
+}
+.socSet{
+  text-decoration: none;
+  color: black;
+}
+.socSet:hover{
+  color: rgb(255, 253, 253);
 
+}
+.myBtn{
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.myBtn:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.801);
+}
+
+.modal-content{
+  z-index: 6;
+  background-color: #dbd196;
+  border: 15px solid rgb(70, 48, 7);
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+.rules{
+  color: rgb(70, 48, 7);
+  font-weight: bold;
+}
+.close{
+  color: rgb(252, 0, 0);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
 .fishka1{
-  background-image: url(P1\ \(1\).png);
+  background-image: url(Fishka2.png);
   width: 100px;
   height: 100px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
+  border-radius: 40%;
   }
 
-.fishka11{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 20vh;
-}
-.fishka12{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 25vh;
-}
-.fishka13{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 30vh;
-}
-.fishka14{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 35vh;
-}
-.fishka15{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 40vh;
-}
-.fishka16{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 45vh;
-}
-.fishka17{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 50vh;
-}
-.fishka18{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 55vh;
-}
+  .fishka2{
+    background-image: url(Fishka1.png);
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  border-radius: 40%;
+  }
 
-
-.fishka21{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 60vh;
-}
-.fishka22{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 55vh;
-}
-.fishka23{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 50vh;
-}
-.fishka24{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 45vh;
-}
-.fishka25{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 40vh;
-}
-.fishka26{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 35vh;
-}
-.fishka27{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 30vh;
-}
-.fishka28{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 25vh;
-}
-  
-
-
-.row1{
+.row{
     display: flex;
     align-items: center;
     justify-content: center;
     
-}
-.row2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.row3{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.row4{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .cell{
@@ -428,7 +320,7 @@ background-repeat: no-repeat;
 .click1pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(1\).png);
+  background-image: url(Fishka2.png);
   background-color: rgb(248, 144, 239);
   border-radius: 40px;
   z-index: 2;
@@ -436,7 +328,7 @@ background-repeat: no-repeat;
 .click2pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(2\).png);
+  background-image: url(Fishka1.png);
   background-color: rgb(107, 252, 252);
   z-index: 2;
   border-radius: 40px;
@@ -468,34 +360,13 @@ border: 5px solid rgb(41, 247, 178);
 border-radius: 10px;
 background-color: antiquewhite;
 }
-.row1{
+.row{
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   padding: 0;
   
-}
-.row2{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-.row3{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-.row4{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
 }
 
 .newElement0{
@@ -689,7 +560,7 @@ background-repeat: no-repeat;
 .click1pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(1\).png);
+  background-image: url(Fishka2.png);
   background-color: rgb(248, 144, 239);
   border-radius: 40px;
   z-index: 2;
@@ -697,7 +568,7 @@ background-repeat: no-repeat;
 .click2pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(2\).png);
+  background-image: url(Fishka1.png);
   background-color: rgb(107, 252, 252);
   z-index: 2;
   border-radius: 40px;
@@ -711,8 +582,8 @@ background-repeat: no-repeat;
   width: 140px;
   height: 140px;
 }
-.fishka11{
-  background-image: url(P1\ \(1\).png);
+.fishka1{
+  background-image: url(Fishka2.png);
   width: 80px;
   height: 80px;
   background-size: cover;
@@ -723,8 +594,8 @@ background-repeat: no-repeat;
   top: 80vh;
   background-color: rgba(240, 248, 255, 0);
   }
-  .fishka12{
-  background-image: url(P1\ \(1\).png);
+  .fishka2{
+  background-image: url(Fishka1.png);
   background-color: rgba(240, 248, 255, 0);
   width: 80px;
   height: 80px;
@@ -734,176 +605,5 @@ background-repeat: no-repeat;
   position: absolute;
   top: 80vh;
     left: 5vh;
-  }
-  .fishka13{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-    top: 80vh;
-    left: 10vh;
-  
-  }
-  .fishka14{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 15vh;
-  }
-  .fishka15{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 20vh;
-  }
-  .fishka16{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 25vh;
-  }
-  .fishka17{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 30vh;
-  }
-  .fishka18{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 35vh;
-  }
-  
-  
-  .fishka21{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0vh;
-  top: 71.7vh;
-  }
-  .fishka22{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 5vh;
-  top: 71.7vh;
-  }
-  .fishka23{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 10vh;
-  top: 71.7vh;
-  }
-  .fishka24{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 15vh;
-  top: 71.7vh;
-  }
-  .fishka25{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 20vh;
-  top: 71.7vh;
-  }
-  .fishka26{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 25vh;
-  top: 71.7vh;
-  }
-  .fishka27{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 30vh;
-  top: 71.7vh;
-  }
-  .fishka28{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 35vh;
-  top: 71.7vh;
   }
 }
