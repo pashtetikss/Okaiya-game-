@@ -10,24 +10,57 @@ let information1=document.querySelector(".information1")
 let information2=document.querySelector(".information2")
 let information3=document.querySelector(".information3")
 let information4=document.querySelector(".information4")
+let information5=document.querySelector(".information5")
 let rules = document.querySelector(".rules")
 let start = document.querySelector(".footer__start")
 let author = document.querySelector(".footer__author")
 let timer1=document.querySelector(".timer1")
 let timer2=document.querySelector(".timer2")
 const mediaQuery = window.matchMedia('(max-width: 768px)')
+const AnimationWinFirst = document.querySelector(".winFirstEnd")
+const AnimationWinFirst2 = document.querySelector(".winFirstEnd2")
+const AnimationWinSecond = document.querySelector(".winSecondEnd")
+const AnimationWinSecond2 = document.querySelector(".winSecondEnd2")
+const darkSide = document.querySelector(".darkSide")
+const footer = document.querySelector("footer")
+
+let nowTurn = 0
 
 let times1
 let times2
 
 let time1 = 0;
 let time2 = 0;
+let isDarkSide = false
 
 information1.style.display = "flex"
 
 const body = document.querySelector("body")
 const container = document.querySelector(".container")
 let isRu = true
+
+darkSide.onclick = function(){
+if(!isDarkSide){
+   body.style.backgroundColor = "#383525"
+   footer.style.backgroundColor = "#dbd196"
+   AnimationWinFirst.style.backgroundColor = "#383525"
+   AnimationWinFirst2.style.backgroundColor = "#383525"
+   AnimationWinSecond.style.backgroundColor = "#383525"
+   AnimationWinSecond2.style.backgroundColor = "#383525"
+   container.style.backgroundColor = "#dbd196"
+   isDarkSide = true
+}
+else if(isDarkSide){
+   body.style.backgroundColor = "white"
+   footer.style.backgroundColor = "rgb(157, 236, 236)"
+   AnimationWinFirst.style.backgroundColor = "white"
+   AnimationWinFirst2.style.backgroundColor = "white"
+   AnimationWinSecond.style.backgroundColor = "white"
+   AnimationWinSecond2.style.backgroundColor = "white"
+   container.style.backgroundColor = "antiquewhite"
+   isDarkSide = false
+}
+}
 
 btnLang.onclick = function (){
 start.style.display = "none"
@@ -38,11 +71,26 @@ information1.style.display = "none"
 information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
+information5.style.display = "none"
 information1=document.querySelector(".information1")
 information2=document.querySelector(".information2")
 information3=document.querySelector(".information3")
 information4=document.querySelector(".information4")
-information1.style.display = "flex"
+information5=document.querySelector(".information5")
+if((nowTurn==1 || nowTurn==0)&& isWin==false){
+   information1.style.display = "flex" 
+}
+if(nowTurn==2 && isWin==false){
+   information2.style.display = "flex" 
+}
+if((nowTurn==1 || nowTurn==0) && isWin==true){
+   information4.style.display = "flex"
+   information5.style.display = "flex"
+}
+if(nowTurn==2 && isWin==true){
+   information3.style.display = "flex" 
+   information5.style.display = "flex"
+}
 btn.style.display = "none"
 rules.style.display = "none"
 btn = document.getElementById("myBtn")
@@ -57,17 +105,32 @@ author = document.querySelector(".footer__author")
 start.style.display = "inline"
 author.style.display = "inline"
    }
-   else{w
+   else{
       isRu=false
 information1.style.display = "none"
 information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
+information5.style.display = "none"
 information1=document.querySelector(".information1eng")
 information2=document.querySelector(".information2eng")
 information3=document.querySelector(".information3eng")
 information4=document.querySelector(".information4eng")
-information1.style.display = "flex"
+information5=document.querySelector(".information5eng")
+if((nowTurn==1 || nowTurn==0) && isWin==false){
+   information1.style.display = "flex" 
+}
+if(nowTurn==2 && isWin==false){
+   information2.style.display = "flex" 
+}
+if((nowTurn==1 || nowTurn==0) && isWin==true){
+   information4.style.display = "flex" 
+   information5.style.display = "flex"
+}
+if(nowTurn==2 && isWin==true){
+   information3.style.display = "flex"
+   information5.style.display = "flex" 
+}
 btn.style.display = "none"
 rules.style.display = "none"
 btn = document.getElementById("myBtnEng")
@@ -178,6 +241,7 @@ fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
 fishkas2[0].style.border= "5px solid Blue"
 
 function delete1(){
+   nowTurn = 1
    clearInterval(times1)
    Times2()
    d++ 
@@ -194,6 +258,7 @@ function delete1(){
 }
 
 function delete2(){
+   nowTurn = 2
    clearInterval(times2)
    Times1();
    d2++
@@ -278,6 +343,10 @@ if(first==1){
 JZ=1
 }
 }
+checkWinNoTurn = []
+for(i=0; i<16; i++){
+   checkWinNoTurn.push(0)
+   }
 
    jpg[0].addEventListener("click", show0)
    function show0(){
@@ -286,11 +355,11 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[0] = 1
+      checkWinNoTurn[0] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
       body.appendChild(o)
-      
       if (turn % 2 == 0){
          jpg[0].classList.add("click1pl")
          turn++
@@ -308,6 +377,7 @@ JZ=1
          else alert("Your move doesn't follow the rules")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin0(turn)
    }}
 
 
@@ -318,6 +388,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[1] = 1
+      checkWinNoTurn[1] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -339,6 +410,7 @@ JZ=1
          else alert("Your move doesn't follow the rules")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin1(turn)
    }}
 
 
@@ -349,6 +421,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[2] = 1
+      checkWinNoTurn[2] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -366,10 +439,10 @@ JZ=1
          checkFinish()
          }}
       else{
-         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
-         else alert("Your move doesn't follow the rules")
+         if(isRu==true)alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin2(turn)
    }}
 
    jpg[3].addEventListener("click", show3)
@@ -379,6 +452,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[3] = 1
+      checkWinNoTurn[3] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -399,6 +473,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin3(turn)
    }}
 
    jpg[4].addEventListener("click", show4)
@@ -408,6 +483,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[4] = 1
+      checkWinNoTurn[4] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -428,6 +504,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin4(turn)
    }}
 
     jpg[5].addEventListener("click", show5)
@@ -437,6 +514,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[5] = 1
+      checkWinNoTurn[5] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -457,6 +535,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin5(turn)
    }}
 
    jpg[6].addEventListener("click", show6)
@@ -466,6 +545,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[6] = 1
+      checkWinNoTurn[6] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -486,6 +566,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin6(turn)
    }}
 
    jpg[7].addEventListener("click", show7)
@@ -495,6 +576,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[7] = 1
+      checkWinNoTurn[7] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -515,6 +597,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin7(turn)
    }}
 
    jpg[8].addEventListener("click", show8)
@@ -524,6 +607,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[8] = 1
+      checkWinNoTurn[8] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -544,6 +628,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin8(turn)
    }}
 
    jpg[9].addEventListener("click", show9)
@@ -553,6 +638,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[9] = 1
+      checkWinNoTurn[9] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -573,6 +659,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin9(turn)
    }}
 
     jpg[10].addEventListener("click", show10)
@@ -585,6 +672,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[10] = 1
+      checkWinNoTurn[10] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -605,6 +693,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin10(turn)
    }}
 
    jpg[11].addEventListener("click", show11)
@@ -614,6 +703,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[11] = 1
+      checkWinNoTurn[11] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -634,6 +724,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin11(turn)
    }}
 
    jpg[12].addEventListener("click", show12)
@@ -644,10 +735,10 @@ JZ=1
          let o = document.createElement("div")
          obnul()
       j[12] = 1
+      checkWinNoTurn[12] = 1
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
          body.appendChild(o)
-
       if (turn % 2 == 0){
          jpg[12].classList.add("click1pl")
          turn++
@@ -664,6 +755,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin12(turn)
    }}
 
    jpg[13].addEventListener("click", show13)
@@ -674,6 +766,7 @@ JZ=1
          let o = document.createElement("div")
          obnul()
          j[13] = 1
+      checkWinNoTurn[13] = 1
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
          body.appendChild(o)
@@ -693,6 +786,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin13(turn)
    }}
 
    jpg[14].addEventListener("click", show14)
@@ -702,6 +796,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
          obnul()
          j[14] = 1
+      checkWinNoTurn[14] = 1
          let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
@@ -719,10 +814,12 @@ JZ=1
          checkFinish()
          }}
       else{
-                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+      noTurnWin14(turn)
+   }
+   if(j[12]==0 || j[13]==0 || j[15]==0 || j[2]==0 || j[6]==0 || j[10]==0){}}
 
    jpg[15].addEventListener("click", show15)
    function show15(){
@@ -731,6 +828,7 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
          obnul()
       j[15] = 1
+      checkWinNoTurn[15] = 1
          let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
@@ -751,6 +849,7 @@ JZ=1
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
+      noTurnWin15(turn)
    }}
 
    
@@ -790,27 +889,162 @@ function finishend() {
    if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3] || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7] || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11] || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15] || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12] || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13] || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14] || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15] || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12] || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15] || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5] || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6] || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7] || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9] || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10] || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11] || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13] || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14] || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15])
    {
       if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3]&&c[0]==1 || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7]&&c[4]==1 || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11]&&c[8]==1 || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15]&&c[12]==1 || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12]&&c[0]==1 || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13]&&c[1]==1 || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14]&&c[2]==1 || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15]&&c[3]==1 || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12]&&c[3]==1 || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15]&&c[0]==1 || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5]&&c[0]==1 || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6]&&c[1]==1 || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7]&&c[2]==1 || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9]&&c[4]==1 || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10]&&c[5]==1 || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11]&&c[6]==1 || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13]&&c[8]==1 || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14]&&c[9]==1 || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15]&&c[10]==1){
-         if(isRu==true){
+         /*if(isRu==true){
             alert("Выиграл второй игрок(Фиолетовые фишки)")
          }
          if(isRu==false){
             alert("Second player wins(Purple chips)")
-         }
+         }*/
         information1.style.display = "none" 
       information2.style.display = "none" 
       information4.style.display = "flex" 
+      information5.style.display = "flex" 
+      AnimationWinSecond.style.display = "flex"
+      AnimationWinSecond2.style.display = "flex"
       }
       else{
-         if(isRu==true){
+        /* if(isRu==true){
             alert("Выиграл первый игрок(Золотые фишки)")
          }
          if(isRu==false){
             alert("First player wins(Golden chips)")
-         }
+         }*/
         information1.style.display = "none" 
       information2.style.display = "none" 
         information3.style.display = "flex"
+        information5.style.display = "flex" 
+        AnimationWinFirst.style.display = "flex"
+        AnimationWinFirst2.style.display = "flex"
+      
       } 
+      clearInterval(times2)
+      clearInterval(times1)
       obnul() 
+      isWin=true
    }   
 }
+let isWin = false
+function winFirst(){
+   information1.style.display = "none" 
+   information2.style.display = "none" 
+   information3.style.display = "flex" 
+   information4.style.display = "none"  
+   information5.style.display = "flex" 
+   clearInterval(times2)
+      clearInterval(times1)
+      obnul() 
+      isWin=true
+      AnimationWinFirst.style.display = "flex"
+      AnimationWinFirst2.style.display = "flex"    
+}
+function winSecond(){
+   information1.style.display = "none" 
+   information2.style.display = "none" 
+   information3.style.display = "none" 
+   information4.style.display = "flex"
+   information5.style.display = "flex" 
+   clearInterval(times2)
+      clearInterval(times1)
+      obnul()  
+      isWin=true
+      AnimationWinSecond.style.display = "flex"
+      AnimationWinSecond2.style.display = "flex"
+}
+function noTurnWin0(turn){
+   if(checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 &&checkWinNoTurn[2] == 1 &&checkWinNoTurn[3] == 1 &&checkWinNoTurn[4] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[12] == 1){
+      if(turn % 2 == 0) winFirst()
+      if(turn % 2 !== 0) winSecond() 
+   }
+}
+function noTurnWin1(turn){
+if(checkWinNoTurn[1] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[13] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin2(turn){
+if(checkWinNoTurn[2] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[14] == 1){
+   if(turn % 2 == 0) winFirst()
+   if(turn % 2 !== 0) winSecond() 
+}
+} 
+function noTurnWin3(turn){ 
+if(checkWinNoTurn[3] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[15] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+}  
+function noTurnWin4(turn){
+if(checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[12] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+}  
+function noTurnWin5(turn){
+if(checkWinNoTurn[5] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[13] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin6(turn){
+if(checkWinNoTurn[6] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[14] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+}  
+function noTurnWin7(turn){
+if(checkWinNoTurn[7] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[15] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+}  
+function noTurnWin8(turn){
+if(checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[12] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+}  
+function noTurnWin9(turn){
+if(checkWinNoTurn[9] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[13] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin10(turn){
+if(checkWinNoTurn[10] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[14] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin11(turn){
+if(checkWinNoTurn[11] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[15] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin12(turn){
+if(checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[8] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin13(turn){
+if(checkWinNoTurn[13] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[9] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+} 
+}
+function noTurnWin14(turn){
+if(checkWinNoTurn[14] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[10] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+}
+} 
+function noTurnWin15(turn){
+if(checkWinNoTurn[15] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[11] == 1){
+   if(turn % 2 == 0) winFirst()
+   else winSecond() 
+} 
+}
+   
+

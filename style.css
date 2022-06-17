@@ -2,6 +2,66 @@
   margin: 0;
   padding: 0;
 }
+.darkSide{
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.darkSide:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.winSecondEnd{
+  width: 23%;
+  height: 46%;
+  left: 7%;
+  top: 20%;
+  position: absolute;
+  background-size: cover;
+  background-image: url(Fishka2.png);
+  z-index: 3;
+  animation-name: square;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  display: none;
+}
+.winSecondEnd2{
+  left: 70%;
+}
+.winFirstEnd{
+  width: 23%;
+  height: 46%;
+  left: 7%;
+  top: 20%;
+  position: absolute;
+  background-size: cover;
+  background-image: url(Fishka1.png);
+  z-index: 3;
+  animation-name: square;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  background-color: white;
+  border-radius: 40%;
+  display: none;
+}
+.winFirstEnd2{
+  left: 70%;
+}
+@keyframes square {
+  0%   {transform: rotate(360deg)}
+  25%  {transform: rotate(0deg)}
+  50%  {transform: rotate(360deg)}
+  75%  {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
+
 .timer1{
   border-radius: 20px;
   width: 80px;
@@ -74,12 +134,31 @@
   left: 34%;
   display: none;
 }
+.information5{
+  position: absolute;
+  font-weight: bold;
+  font-size: 40px;
+  bottom: 20%;
+  left: 40%;
+  display: none;
+  background-color: #dbd196;
+  color: aliceblue;
+  text-decoration: none;
+  width: 20%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation-name: size;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
 .information1eng{
   position: absolute;
   font-weight: bold;
   font-size: 30px;
   bottom: 15%;
-  left: 34%;
+  left: 40%;
   display: none;
 }
 .information2eng{
@@ -87,7 +166,7 @@
   font-weight: bold;
   font-size: 30px;
   bottom: 15%;
-  left: 34%;
+  left: 40%;
   display: none;
 }
 .information3eng{
@@ -95,7 +174,7 @@
   font-weight: bold;
   font-size: 30px;
   bottom: 15%;
-  left: 34%;
+  left: 40%;
   display: none;
 }
 .information4eng{
@@ -103,8 +182,34 @@
   font-weight: bold;
   font-size: 30px;
   bottom: 15%;
-  left: 34%;
+  left: 40%;
   display: none;
+}
+.information5eng{
+  position: absolute;
+  background-color: #dbd196;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 40px;
+  bottom: 20%;
+  left: 40%;
+  display: none;
+  width: 20%;
+  height: 80px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation-name: size;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+@keyframes size{
+  0%   {height: 120px; color: aqua;}
+  25%  {height: 80px; color: rgb(253, 2, 232);}
+  50%  {height: 120px; color: rgb(0, 47, 255);}
+  75%  {height: 80px; color: rgb(255, 0, 0);}
+  100% {height: 120px; color: aqua;}
 }
 .gold{
   color: gold;
@@ -155,11 +260,11 @@ footer{
   color: rgb(59, 57, 25);
   width: 200px;
   height: 40px;
-  top: 50px;
+  top: 70px;
   right: 50px;
   position: absolute;
   font-weight: bold;
-  cursor: cell;
+  cursor: pointer;
   border-radius: 5px;
 }
 .btnLang:hover{
