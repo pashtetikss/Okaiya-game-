@@ -2,6 +2,7 @@ let cell = []
 let first = 1
 let JZ=0
 let turn = 1
+let turn2 = 1
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
 let btnLang = document.getElementById("btnLang")
@@ -11,6 +12,7 @@ let information2=document.querySelector(".information2")
 let information3=document.querySelector(".information3")
 let information4=document.querySelector(".information4")
 let information5=document.querySelector(".information5")
+let information6=document.querySelector(".information6")
 let rules = document.querySelector(".rules")
 let start = document.querySelector(".footer__start")
 let author = document.querySelector(".footer__author")
@@ -72,11 +74,23 @@ information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
 information5.style.display = "none"
+information6.style.display = "none"
 information1=document.querySelector(".information1")
 information2=document.querySelector(".information2")
 information3=document.querySelector(".information3")
 information4=document.querySelector(".information4")
 information5=document.querySelector(".information5")
+information6=document.querySelector(".information6")
+if(isDraw){
+   information6.style.display = "flex"
+   information1.style.display = "none" 
+   information2.style.display = "none" 
+   information5.style.display = "flex"
+   AnimationWinSecond.style.display = "flex"
+   AnimationWinFirst2.style.display = "flex"
+   AnimationWinFirst.style.display = "none"
+   AnimationWinSecond2.style.display = "none" 
+}
 if((nowTurn==1 || nowTurn==0)&& isWin==false){
    information1.style.display = "flex" 
 }
@@ -112,11 +126,23 @@ information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
 information5.style.display = "none"
+information6.style.display = "none"
 information1=document.querySelector(".information1eng")
 information2=document.querySelector(".information2eng")
 information3=document.querySelector(".information3eng")
 information4=document.querySelector(".information4eng")
 information5=document.querySelector(".information5eng")
+information6=document.querySelector(".information6eng")
+if(isDraw){
+   information6.style.display = "flex"
+   information1.style.display = "none" 
+   information2.style.display = "none"
+   information5.style.display = "flex" 
+   AnimationWinFirst.style.display = "flex"
+   AnimationWinSecond2.style.display = "flex" 
+   AnimationWinSecond.style.display = "none"
+   AnimationWinFirst2.style.display = "none"
+}
 if((nowTurn==1 || nowTurn==0) && isWin==false){
    information1.style.display = "flex" 
 }
@@ -247,14 +273,12 @@ function delete1(){
    d++ 
    information2.style.display = "none" 
    information1.style.display = "flex"
-   for(i=0; i<8; i++){
-      if(d==i){
-         fishkas1[i].remove()
-         fishkas2[i+1].style.backgroundColor = "Cyan"
-         fishkas2[i+1].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
-         fishkas2[i+1].style.border= "5px solid Blue"
-      } 
-   }
+         fishkas1[d].remove()
+         if(d<7){
+            fishkas2[d+1].style.backgroundColor = "Cyan"
+         fishkas2[d+1].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
+         fishkas2[d+1].style.border= "5px solid Blue" 
+         }       
 }
 
 function delete2(){
@@ -364,20 +388,22 @@ for(i=0; i<16; i++){
          jpg[0].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[0].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin0(turn)
+      }
       else{
          if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin0(turn)
    }}
 
 
@@ -397,20 +423,22 @@ for(i=0; i<16; i++){
          jpg[1].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[1].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+           delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin1(turn)
+      }
       else{
          if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin1(turn)
    }}
 
 
@@ -430,19 +458,21 @@ for(i=0; i<16; i++){
          jpg[2].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[2].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin2(turn)
+      }
       else{
          if(isRu==true)alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin2(turn)
    }}
 
    jpg[3].addEventListener("click", show3)
@@ -461,19 +491,21 @@ for(i=0; i<16; i++){
          jpg[3].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[3].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin3(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin3(turn)
    }}
 
    jpg[4].addEventListener("click", show4)
@@ -492,19 +524,21 @@ for(i=0; i<16; i++){
          jpg[4].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[4].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin4(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin4(turn)
    }}
 
     jpg[5].addEventListener("click", show5)
@@ -523,19 +557,21 @@ for(i=0; i<16; i++){
          jpg[5].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[5].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin5(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin5(turn)
    }}
 
    jpg[6].addEventListener("click", show6)
@@ -554,19 +590,21 @@ for(i=0; i<16; i++){
          jpg[6].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[6].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin6(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin6(turn)
    }}
 
    jpg[7].addEventListener("click", show7)
@@ -585,19 +623,21 @@ for(i=0; i<16; i++){
          jpg[7].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[7].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin7(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin7(turn)
    }}
 
    jpg[8].addEventListener("click", show8)
@@ -616,19 +656,21 @@ for(i=0; i<16; i++){
          jpg[8].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[8].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin8(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin8(turn)
    }}
 
    jpg[9].addEventListener("click", show9)
@@ -647,19 +689,21 @@ for(i=0; i<16; i++){
          jpg[9].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[9].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin9(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin9(turn)
    }}
 
     jpg[10].addEventListener("click", show10)
@@ -681,19 +725,21 @@ for(i=0; i<16; i++){
          jpg[10].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[10].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin10(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin10(turn)
    }}
 
    jpg[11].addEventListener("click", show11)
@@ -712,19 +758,21 @@ for(i=0; i<16; i++){
          jpg[11].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[11].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin11(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin11(turn)
    }}
 
    jpg[12].addEventListener("click", show12)
@@ -743,19 +791,21 @@ for(i=0; i<16; i++){
          jpg[12].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[12].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin12(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin12(turn)
    }}
 
    jpg[13].addEventListener("click", show13)
@@ -774,19 +824,21 @@ for(i=0; i<16; i++){
          jpg[13].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[13].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin13(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin13(turn)
    }}
 
    jpg[14].addEventListener("click", show14)
@@ -805,21 +857,23 @@ for(i=0; i<16; i++){
          jpg[14].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[14].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin14(turn)
+      }
       else{
          if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin14(turn)
    }
-   if(j[12]==0 || j[13]==0 || j[15]==0 || j[2]==0 || j[6]==0 || j[10]==0){}}
+}
 
    jpg[15].addEventListener("click", show15)
    function show15(){
@@ -837,19 +891,21 @@ for(i=0; i<16; i++){
          jpg[15].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[15].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin15(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-      noTurnWin15(turn)
    }}
 
    
@@ -870,8 +926,10 @@ for(i=3;i<19;i++){
 }
 
 let checkClass = []
+let CheckDraw
+let isDraw = false
 
-function checkFinish(){
+function checkFinish(turn){
    for(i=0;i<16; i++){
       checkClass[i] = cell[i].classList
       if (checkClass[i][1] == "click1pl"){
@@ -882,54 +940,41 @@ function checkFinish(){
       }
    }  
    first=0
-   finishend()
+   finishend(turn) 
+   if(turn==17){
+      isDraw = true
+      clearInterval(times2)
+      clearInterval(times1)
+      obnul() 
+      information6.style.display = "flex"
+      information1.style.display = "none" 
+      information2.style.display = "none" 
+      information5.style.display = "flex"
+      AnimationWinSecond.style.display = "flex"
+      AnimationWinFirst2.style.display = "flex" 
+   }
 }
+
 
 function finishend() {
    if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3] || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7] || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11] || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15] || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12] || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13] || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14] || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15] || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12] || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15] || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5] || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6] || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7] || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9] || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10] || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11] || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13] || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14] || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15])
    {
       if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3]&&c[0]==1 || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7]&&c[4]==1 || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11]&&c[8]==1 || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15]&&c[12]==1 || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12]&&c[0]==1 || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13]&&c[1]==1 || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14]&&c[2]==1 || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15]&&c[3]==1 || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12]&&c[3]==1 || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15]&&c[0]==1 || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5]&&c[0]==1 || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6]&&c[1]==1 || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7]&&c[2]==1 || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9]&&c[4]==1 || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10]&&c[5]==1 || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11]&&c[6]==1 || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13]&&c[8]==1 || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14]&&c[9]==1 || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15]&&c[10]==1){
-         /*if(isRu==true){
-            alert("Выиграл второй игрок(Фиолетовые фишки)")
-         }
-         if(isRu==false){
-            alert("Second player wins(Purple chips)")
-         }*/
-        information1.style.display = "none" 
-      information2.style.display = "none" 
-      information4.style.display = "flex" 
-      information5.style.display = "flex" 
-      AnimationWinSecond.style.display = "flex"
-      AnimationWinSecond2.style.display = "flex"
+         winFirst()
       }
-      else{
-        /* if(isRu==true){
-            alert("Выиграл первый игрок(Золотые фишки)")
-         }
-         if(isRu==false){
-            alert("First player wins(Golden chips)")
-         }*/
-        information1.style.display = "none" 
-      information2.style.display = "none" 
-        information3.style.display = "flex"
-        information5.style.display = "flex" 
-        AnimationWinFirst.style.display = "flex"
-        AnimationWinFirst2.style.display = "flex"
+      else winSecond()  
       
-      } 
-      clearInterval(times2)
-      clearInterval(times1)
-      obnul() 
       isWin=true
    }   
 }
 let isWin = false
-function winFirst(){
+function winSecond(){
    information1.style.display = "none" 
    information2.style.display = "none" 
    information3.style.display = "flex" 
    information4.style.display = "none"  
    information5.style.display = "flex" 
+   container.style.animation = "ramka1 3s infinite";
    clearInterval(times2)
       clearInterval(times1)
       obnul() 
@@ -937,7 +982,7 @@ function winFirst(){
       AnimationWinFirst.style.display = "flex"
       AnimationWinFirst2.style.display = "flex"    
 }
-function winSecond(){
+function winFirst(){
    information1.style.display = "none" 
    information2.style.display = "none" 
    information3.style.display = "none" 
@@ -949,102 +994,150 @@ function winSecond(){
       isWin=true
       AnimationWinSecond.style.display = "flex"
       AnimationWinSecond2.style.display = "flex"
+      container.style.animation = "ramka2 3s infinite";
 }
 function noTurnWin0(turn){
    if(checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 &&checkWinNoTurn[2] == 1 &&checkWinNoTurn[3] == 1 &&checkWinNoTurn[4] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[12] == 1){
-      if(turn % 2 == 0) winFirst()
+      if(turn % 2 == 0 && turn<17) winFirst()
       if(turn % 2 !== 0) winSecond() 
+   }
+   else if(turn2==17){
+      information6.style.display = "flex" 
    }
 }
 function noTurnWin1(turn){
 if(checkWinNoTurn[1] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[13] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin2(turn){
 if(checkWinNoTurn[2] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[14] == 1){
-   if(turn % 2 == 0) winFirst()
+   if(turn % 2 == 0 && turn<17) winFirst()
    if(turn % 2 !== 0) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin3(turn){ 
 if(checkWinNoTurn[3] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[15] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 }  
 function noTurnWin4(turn){
 if(checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[12] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 }  
 function noTurnWin5(turn){
 if(checkWinNoTurn[5] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[13] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin6(turn){
 if(checkWinNoTurn[6] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[14] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 }  
 function noTurnWin7(turn){
 if(checkWinNoTurn[7] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[15] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 }  
 function noTurnWin8(turn){
 if(checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[12] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 }  
 function noTurnWin9(turn){
 if(checkWinNoTurn[9] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[13] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin10(turn){
 if(checkWinNoTurn[10] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[14] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin11(turn){
 if(checkWinNoTurn[11] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[15] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin12(turn){
 if(checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[8] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin13(turn){
 if(checkWinNoTurn[13] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[9] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 } 
 }
 function noTurnWin14(turn){
 if(checkWinNoTurn[14] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[10] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
 }
 } 
 function noTurnWin15(turn){
 if(checkWinNoTurn[15] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[11] == 1){
-   if(turn % 2 == 0) winFirst()
-   else winSecond() 
-} 
+   if(turn % 2 == 0 && turn<17) winFirst()
+   else if (turn % 2 == 0 && turn<17) winSecond() 
 }
-   
+else if(turn2==17){
+   information6.style.display = "flex" 
+} 
+} 
 

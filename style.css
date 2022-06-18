@@ -30,6 +30,7 @@
   animation-name: square;
   animation-duration: 20s;
   animation-iteration-count: infinite;
+  border-radius: 40%;
   display: none;
 }
 .winSecondEnd2{
@@ -43,7 +44,7 @@
   position: absolute;
   background-size: cover;
   background-image: url(Fishka1.png);
-  z-index: 3;
+  z-index: 5;
   animation-name: square;
   animation-duration: 20s;
   animation-iteration-count: infinite;
@@ -153,6 +154,27 @@
   animation-duration: 10s;
   animation-iteration-count: infinite;
 }
+.information5:hover{
+  background-color: #333022;
+  color: rgb(241, 241, 183);
+  cursor:pointer;
+}
+.information6{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 11%;
+  left: 30%;
+  text-decoration: none;
+  width: 40%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: none;
+  background-color: #dbd196;
+  border-radius: 20px;
+}
 .information1eng{
   position: absolute;
   font-weight: bold;
@@ -204,15 +226,96 @@
   animation-duration: 10s;
   animation-iteration-count: infinite;
 }
+.information6eng{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 11%;
+  left: 30%;
+  text-decoration: none;
+  width: 40%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: none;
+  background-color: #dbd196;
+  border-radius: 20px;
+}
+.letter1{
+  animation-name: letter1;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter1 {
+  0%   {font-size: 40px; color: aqua;}
+  25%  {font-size: 50px; color: rgb(253, 2, 232);}
+  50%  {font-size: 30px; color: rgb(0, 47, 255);}
+  75%  {font-size: 50px; color: rgb(255, 0, 0);}
+  100% {font-size: 40px; color: aqua;}
+}
+.letter2{
+  animation-name: letter2;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter2 {
+  0%   {font-size: 40px; color: rgb(255, 0, 0)}
+  25%  {font-size: 50px; color: aqua;}
+  50%  {font-size: 40px; color: rgb(253, 2, 232);}
+  75%  {font-size: 50px; color: rgb(0, 47, 255);}
+  100% {font-size: 40px; color: rgb(255, 0, 0)}
+}
+.letter3{
+  animation-name: letter3;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter3 {
+  0%   {font-size: 40px; color: rgb(0, 47, 255)}
+  25%  {font-size: 30px; color: rgb(255, 0, 0);}
+  50%  {font-size: 40px; color: aqua;}
+  75%  {font-size: 30px; color: rgb(253, 2, 232);}
+  100% {font-size: 40px; color: rgb(0, 47, 255)}
+}
+.letter4{
+  animation-name: letter4;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter4 {
+  0%   {font-size: 40px; color: rgb(253, 2, 232);}
+  25%  {font-size: 30px; color: rgb(0, 47, 255);}
+  50%  {font-size: 30px; color: rgb(255, 0, 0);}
+  75%  {font-size: 35px; color: aqua;}
+  100% {font-size: 40px; color: rgb(253, 2, 232);}
+}
+.letter5{
+  animation-name: letter5;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter5 {
+  0%   {font-size: 40px; color: rgb(100, 12, 93);}
+  25%  {font-size: 30px; color: rgb(119, 0, 255);}
+  50%  {font-size: 30px; color: rgb(34, 90, 20);}
+  75%  {font-size: 35px; color: rgb(150, 13, 13);}
+  100% {font-size: 40px; color: rgb(100, 12, 93);}
+}
 @keyframes size{
-  0%   {height: 120px; color: aqua;}
+  0%   {height: 120px; color: aqua;border-radius: 0%;}
   25%  {height: 80px; color: rgb(253, 2, 232);}
-  50%  {height: 120px; color: rgb(0, 47, 255);}
+  50%  {height: 120px; color: rgb(0, 47, 255); border-radius: 50%;}
   75%  {height: 80px; color: rgb(255, 0, 0);}
-  100% {height: 120px; color: aqua;}
+  100% {height: 120px; color: aqua;border-radius: 0%;}
 }
 .gold{
-  color: gold;
+  color: rgb(179, 176, 7);
 }
 .purple{
   color: blueviolet;
@@ -231,6 +334,22 @@ position: relative;
 border: 5px solid rgb(41, 247, 178);
 border-radius: 10px;
 background-color: antiquewhite;
+animation-duration: 3s;
+animation-iteration-count: infinite;
+}
+@keyframes ramka1{
+  0%   {border: 5px solid aqua;}
+  25%  {border: 5px solid rgb(179, 176, 7)}
+  50%  {border: 5px solid aqua;}
+  75%  {border: 5px solid rgb(179, 176, 7);}
+  100% {border: 5px solid aqua;}
+}
+@keyframes ramka2{
+  0%   {border: 5px solid aqua;}
+  25%  {border: 5px solid rgb(204, 0, 255)}
+  50%  {border: 5px solid aqua;}
+  75%  {border: 5px solid rgb(204, 0, 255)}
+  100% {border: 5px solid aqua;}
 }
 footer{
   display: flex;
@@ -599,6 +718,12 @@ background-repeat: no-repeat;
   width: 150px;
   height: 150px;
 }
+
+
+
+
+
+
 @media (max-width:767px){
   *{
     margin: 0;
@@ -612,7 +737,6 @@ background-repeat: no-repeat;
   padding: 0;
   
 }
-
 .newElement0{
     width: 100px;
     height: 100px;
@@ -837,6 +961,7 @@ background-repeat: no-repeat;
   left: 0vh;
   top: 80vh;
   background-color: rgba(240, 248, 255, 0);
+  display: none;
   }
   .fishka2{
   background-image: url(Fishka1.png);
@@ -847,6 +972,7 @@ background-repeat: no-repeat;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
+  display: none;
   top: 80vh;
     left: 5vh;
   }
@@ -854,7 +980,7 @@ background-repeat: no-repeat;
     border-radius: 20px;
     width: 50px;
     height: 30px;
-    display: flex;
+    display: none;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -872,7 +998,7 @@ background-repeat: no-repeat;
     border-radius: 20px;
     width: 50px;
     height: 30px;
-    display: flex;
+    display: none;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -889,7 +1015,7 @@ background-repeat: no-repeat;
   .information1{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 18px;
     bottom: 13%;
     left: 1%;
     display: none;
@@ -897,7 +1023,7 @@ background-repeat: no-repeat;
   .information2{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 17px;
     bottom: 13%;
     left: 1%;
     display: none;
@@ -906,22 +1032,59 @@ background-repeat: no-repeat;
     position: absolute;
     font-weight: bold;
     font-size: 19px;
-    bottom: 13%;
+    bottom: 10%;
     left: 1%;
     display: none;
   }
   .information4{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
-    bottom: 13%;
+    font-size: 19px;
+    bottom: 10%;
     left: 1%;
     display: none;
+  }
+  .information5{
+    position: absolute;
+    font-weight: bold;
+    font-size: 40px;
+    bottom: 17%;
+    left: 10%;
+    right: 50%;
+    display: none;
+    background-color: #dbd196;
+    color: aliceblue;
+    text-decoration: none;
+    width: 40%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation-name: size;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  .information6{
+    position: absolute;
+    font-weight: bold;
+    font-size: 30px;
+    bottom: 50%;
+    left: 30%;
+    text-decoration: none;
+    width: 40%;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: none;
+    background-color: #dbd196;
+    border-radius: 20px;
+    z-index: 10;
   }
   .information1eng{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 22px;
     bottom: 13%;
     left: 1%;
     display: none;
@@ -929,7 +1092,7 @@ background-repeat: no-repeat;
   .information2eng{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 22px;
     bottom: 13%;
     left: 1%;
     display: none;
@@ -937,24 +1100,62 @@ background-repeat: no-repeat;
   .information3eng{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
-    bottom: 13%;
-    left: 1%;
+    font-size: 22px;
+    bottom: 10%;
+    left: 18%;
     display: none;
   }
   .information4eng{
     position: absolute;
     font-weight: bold;
-    font-size: 15px;
-    bottom: 13%;
+    font-size: 22px;
+    bottom: 10%;
     left: 1%;
     display: none;
   }
-  .gold{
-    color: gold;
+  .information5eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 40px;
+    bottom: 17%;
+    left: 10%;
+    right: 50%;
+    display: none;
+    background-color: #dbd196;
+    color: aliceblue;
+    text-decoration: none;
+    width: 40%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation-name: size;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
   }
-  .purple{
-    color: blueviolet;
+  @keyframes size{
+    0%   {width: 335px; color: aqua;border-radius: 0%;}
+    25%  {width: 335px; color: rgb(253, 2, 232);}
+    50%  {width: 335px; color: rgb(0, 47, 255); border-radius: 50%;}
+    75%  {width: 335px; color: rgb(255, 0, 0);}
+    100% {width: 335px; color: aqua;border-radius: 0%;}
+  }
+  .information6eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 30px;
+    bottom: 50%;
+    left: 30%;
+    text-decoration: none;
+    width: 40%;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: none;
+    background-color: #dbd196;
+    border-radius: 20px;
+    z-index: 10;
   }
   .container{
       padding: 0;
@@ -986,7 +1187,7 @@ background-repeat: no-repeat;
     color: black;
     position: absolute;
     bottom: 2px;
-    left: 48%;
+    left: 45%;
   }
   .socSet:hover{
     color: rgb(255, 253, 253);
@@ -1019,10 +1220,6 @@ background-repeat: no-repeat;
     cursor: cell;
     border-radius: 5px;
   }
-  .myBtn:hover{
-    background-color: rgb(59, 57, 25);
-    color: #dbd196;
-  }
   .myBtnEng{
     background-color: #dbd196;
     color: rgb(59, 57, 25);
@@ -1036,9 +1233,60 @@ background-repeat: no-repeat;
     border-radius: 5px;
     display: none;
   }
-  .myBtnEng:hover{
-    background-color: rgb(59, 57, 25);
-    color: #dbd196;
+  .darkSide{
+    background-color: #dbd196;
+    color: rgb(59, 57, 25);
+    width: 37%;
+    height: 45px;
+    top: 57px;
+    right: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: cell;
+    border-radius: 5px;
+    
+  }
+  .winSecondEnd{
+    width: 8.5%;
+    height: 5%;
+    left: 7%;
+    top: 77%;
+    position: absolute;
+    background-size: cover;
+    background-image: url(Fishka2.png);
+    z-index: 3;
+    animation-name: square;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    border-radius: 40%;
     display: none;
+  }
+  .winSecondEnd2{
+    left: 85%;
+  }
+  .winFirstEnd{
+    width: 8.5%;
+    height: 5%;
+    left: 7%;
+    top: 77%;
+    position: absolute;
+    background-size: cover;
+    background-image: url(Fishka1.png);
+    z-index: 3;
+    animation-name: square;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    border-radius: 40%;
+    display: none;
+  }
+  .winFirstEnd2{
+    left: 85%;
+  }
+  @keyframes square {
+    0%   {transform: rotate(360deg)}
+    25%  {transform: rotate(0deg)}
+    50%  {transform: rotate(360deg)}
+    75%  {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
   }
 }
