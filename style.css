@@ -1,3 +1,325 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.darkSide{
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.darkSide:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.winSecondEnd{
+  width: 23%;
+  height: 46%;
+  left: 7%;
+  top: 20%;
+  position: absolute;
+  background-size: cover;
+  background-image: url(Fishka2.png);
+  z-index: 3;
+  animation-name: square;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  border-radius: 40%;
+  display: none;
+}
+.winSecondEnd2{
+  left: 70%;
+}
+.winFirstEnd{
+  width: 23%;
+  height: 46%;
+  left: 7%;
+  top: 20%;
+  position: absolute;
+  background-size: cover;
+  background-image: url(Fishka1.png);
+  z-index: 5;
+  animation-name: square;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  background-color: white;
+  border-radius: 40%;
+  display: none;
+}
+.winFirstEnd2{
+  left: 70%;
+}
+@keyframes square {
+  0%   {transform: rotate(360deg)}
+  25%  {transform: rotate(0deg)}
+  50%  {transform: rotate(360deg)}
+  75%  {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
+
+.timer1{
+  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  border: 4px solid rgb(56, 45, 10);
+  background-color: #dbd196;
+  color: black;
+  bottom: 20%;
+  left: 10%;
+  position: absolute;
+}
+.timer2{
+  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  border: 4px solid rgb(56, 45, 10);
+  background-color: #dbd196;
+  color: black;
+  bottom: 20%;
+  right: 10%;
+  position: absolute;
+}
+.footer__authorEng{
+  display: none;
+}
+.footer__startEng{
+  display: none;
+}
+.information1{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 34%;
+  display: none;
+}
+.information2{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 34%;
+  display: none;
+}
+.information3{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 34%;
+  display: none;
+}
+.information4{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 34%;
+  display: none;
+}
+.information5{
+  position: absolute;
+  font-weight: bold;
+  font-size: 40px;
+  bottom: 20%;
+  left: 40%;
+  display: none;
+  background-color: #dbd196;
+  color: aliceblue;
+  text-decoration: none;
+  width: 20%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation-name: size;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+.information5:hover{
+  background-color: #333022;
+  color: rgb(241, 241, 183);
+  cursor:pointer;
+}
+.information6{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 11%;
+  left: 30%;
+  text-decoration: none;
+  width: 40%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: none;
+  background-color: #dbd196;
+  border-radius: 20px;
+}
+.information1eng{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 40%;
+  display: none;
+}
+.information2eng{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 40%;
+  display: none;
+}
+.information3eng{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 40%;
+  display: none;
+}
+.information4eng{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 15%;
+  left: 40%;
+  display: none;
+}
+.information5eng{
+  position: absolute;
+  background-color: #dbd196;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 40px;
+  bottom: 20%;
+  left: 40%;
+  display: none;
+  width: 20%;
+  height: 80px;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation-name: size;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+.information6eng{
+  position: absolute;
+  font-weight: bold;
+  font-size: 30px;
+  bottom: 11%;
+  left: 30%;
+  text-decoration: none;
+  width: 40%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: none;
+  background-color: #dbd196;
+  border-radius: 20px;
+}
+.letter1{
+  animation-name: letter1;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter1 {
+  0%   {font-size: 40px; color: aqua;}
+  25%  {font-size: 50px; color: rgb(253, 2, 232);}
+  50%  {font-size: 30px; color: rgb(0, 47, 255);}
+  75%  {font-size: 50px; color: rgb(255, 0, 0);}
+  100% {font-size: 40px; color: aqua;}
+}
+.letter2{
+  animation-name: letter2;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter2 {
+  0%   {font-size: 40px; color: rgb(255, 0, 0)}
+  25%  {font-size: 50px; color: aqua;}
+  50%  {font-size: 40px; color: rgb(253, 2, 232);}
+  75%  {font-size: 50px; color: rgb(0, 47, 255);}
+  100% {font-size: 40px; color: rgb(255, 0, 0)}
+}
+.letter3{
+  animation-name: letter3;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter3 {
+  0%   {font-size: 40px; color: rgb(0, 47, 255)}
+  25%  {font-size: 30px; color: rgb(255, 0, 0);}
+  50%  {font-size: 40px; color: aqua;}
+  75%  {font-size: 30px; color: rgb(253, 2, 232);}
+  100% {font-size: 40px; color: rgb(0, 47, 255)}
+}
+.letter4{
+  animation-name: letter4;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter4 {
+  0%   {font-size: 40px; color: rgb(253, 2, 232);}
+  25%  {font-size: 30px; color: rgb(0, 47, 255);}
+  50%  {font-size: 30px; color: rgb(255, 0, 0);}
+  75%  {font-size: 35px; color: aqua;}
+  100% {font-size: 40px; color: rgb(253, 2, 232);}
+}
+.letter5{
+  animation-name: letter5;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  width: 50px;
+}
+@keyframes letter5 {
+  0%   {font-size: 40px; color: rgb(100, 12, 93);}
+  25%  {font-size: 30px; color: rgb(119, 0, 255);}
+  50%  {font-size: 30px; color: rgb(34, 90, 20);}
+  75%  {font-size: 35px; color: rgb(150, 13, 13);}
+  100% {font-size: 40px; color: rgb(100, 12, 93);}
+}
+@keyframes size{
+  0%   {height: 120px; color: aqua;border-radius: 0%;}
+  25%  {height: 80px; color: rgb(253, 2, 232);}
+  50%  {height: 120px; color: rgb(0, 47, 255); border-radius: 50%;}
+  75%  {height: 80px; color: rgb(255, 0, 0);}
+  100% {height: 120px; color: aqua;border-radius: 0%;}
+}
+.gold{
+  color: rgb(179, 176, 7);
+}
+.purple{
+  color: blueviolet;
+}
 .container{
     padding: 0;
     margin-left: auto;
@@ -12,219 +334,167 @@ position: relative;
 border: 5px solid rgb(41, 247, 178);
 border-radius: 10px;
 background-color: antiquewhite;
+animation-duration: 3s;
+animation-iteration-count: infinite;
+}
+@keyframes ramka1{
+  0%   {border: 5px solid aqua;}
+  25%  {border: 5px solid rgb(179, 176, 7)}
+  50%  {border: 5px solid aqua;}
+  75%  {border: 5px solid rgb(179, 176, 7);}
+  100% {border: 5px solid aqua;}
+}
+@keyframes ramka2{
+  0%   {border: 5px solid aqua;}
+  25%  {border: 5px solid rgb(204, 0, 255)}
+  50%  {border: 5px solid aqua;}
+  75%  {border: 5px solid rgb(204, 0, 255)}
+  100% {border: 5px solid aqua;}
+}
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(157, 236, 236);
+  position: absolute;
+  width: 96%;
+  padding: 0 2%;
+  bottom: 0px;
+  height: 100px;
+  font-size: 20px;
+}
+.socSet{
+  text-decoration: none;
+  color: black;
+  position: absolute;
+  bottom: 2px;
+  left: 48%;
+}
+.socSet:hover{
+  color: rgb(255, 253, 253);
+
+}
+.btnLang{
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  top: 70px;
+  right: 50px;
+  position: absolute;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btnLang:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.myBtn{
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  font-weight: bold;
+  cursor: cell;
+  border-radius: 5px;
+}
+.myBtn:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.myBtnEng{
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  top: 50px;
+  left: 50px;
+  position: absolute;
+  font-weight: bold;
+  cursor: cell;
+  border-radius: 5px;
+  display: none;
+}
+.myBtnEng:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+  display: none;
+}
+.modal{
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.801);
 }
 
+.modal-content{
+  z-index: 6;
+  background-color: #dbd196;
+  border: 15px solid rgb(70, 48, 7);
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  position: relative;
+}
+
+.rules{
+  color: rgb(70, 48, 7);
+  font-weight: bold;
+}
+.rulesEng{
+  color: rgb(70, 48, 7);
+  font-weight: bold;
+  display: none;
+}
+.close{
+  color: rgb(252, 0, 0);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transform: rotate(45deg);
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
 .fishka1{
-  background-image: url(P1\ \(1\).png);
+  background-image: url(Fishka2.png);
   width: 100px;
   height: 100px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
+  border-radius: 40%;
   }
 
-.fishka11{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 20vh;
-}
-.fishka12{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 25vh;
-}
-.fishka13{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 30vh;
-}
-.fishka14{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 35vh;
-}
-.fishka15{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 40vh;
-}
-.fishka16{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 45vh;
-}
-.fishka17{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 50vh;
-}
-.fishka18{
-background-image: url(P1\ \(1\).png);
-width: 100px;
-height: 100px;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-left: 60vh;
-top: 55vh;
-}
+  .fishka2{
+    background-image: url(Fishka1.png);
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  border-radius: 40%;
+  }
 
-
-.fishka21{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 60vh;
-}
-.fishka22{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 55vh;
-}
-.fishka23{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 50vh;
-}
-.fishka24{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 45vh;
-}
-.fishka25{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 40vh;
-}
-.fishka26{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 35vh;
-}
-.fishka27{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 30vh;
-}
-.fishka28{
-  background-image: url(P1\ \(2\).png);
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-position: absolute;
-right: 60vh;
-top: 25vh;
-}
-  
-
-
-.row1{
+.row{
     display: flex;
     align-items: center;
     justify-content: center;
     
-}
-.row2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.row3{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.row4{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .cell{
@@ -428,7 +698,7 @@ background-repeat: no-repeat;
 .click1pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(1\).png);
+  background-image: url(Fishka2.png);
   background-color: rgb(248, 144, 239);
   border-radius: 40px;
   z-index: 2;
@@ -436,7 +706,7 @@ background-repeat: no-repeat;
 .click2pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(2\).png);
+  background-image: url(Fishka1.png);
   background-color: rgb(107, 252, 252);
   z-index: 2;
   border-radius: 40px;
@@ -448,27 +718,18 @@ background-repeat: no-repeat;
   width: 150px;
   height: 150px;
 }
+
+
+
+
+
+
 @media (max-width:767px){
   *{
     margin: 0;
     padding: 0;
-    background-color: rgb(251, 246, 255);
   }
-  .container{
-    padding: 0;
-    margin-left: 0;
-    margin-right: 0;
-margin-top: 20vh;
-margin-bottom: 20vh;
-height: auto;
-width: auto;
-left: 0px;
-position: relative;
-border: 5px solid rgb(41, 247, 178);
-border-radius: 10px;
-background-color: antiquewhite;
-}
-.row1{
+.row{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -476,28 +737,6 @@ background-color: antiquewhite;
   padding: 0;
   
 }
-.row2{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-.row3{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-.row4{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-
 .newElement0{
     width: 100px;
     height: 100px;
@@ -689,7 +928,7 @@ background-repeat: no-repeat;
 .click1pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(1\).png);
+  background-image: url(Fishka2.png);
   background-color: rgb(248, 144, 239);
   border-radius: 40px;
   z-index: 2;
@@ -697,7 +936,7 @@ background-repeat: no-repeat;
 .click2pl{
   width: 100px;
   height: 100px;
-  background-image: url(P1\ \(2\).png);
+  background-image: url(Fishka1.png);
   background-color: rgb(107, 252, 252);
   z-index: 2;
   border-radius: 40px;
@@ -706,15 +945,15 @@ background-repeat: no-repeat;
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 0px;
-  left: 35%;
-  width: 140px;
-  height: 140px;
+  top: 3px;
+  left: 38%;
+  width: 19%px;
+  height: 100px;
 }
-.fishka11{
-  background-image: url(P1\ \(1\).png);
-  width: 80px;
-  height: 80px;
+.fishka1{
+  background-image: url(Fishka2.png);
+  width: 40px;
+  height: 40px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -722,188 +961,332 @@ background-repeat: no-repeat;
   left: 0vh;
   top: 80vh;
   background-color: rgba(240, 248, 255, 0);
+  display: none;
   }
-  .fishka12{
-  background-image: url(P1\ \(1\).png);
+  .fishka2{
+  background-image: url(Fishka1.png);
   background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
+  display: none;
   top: 80vh;
     left: 5vh;
   }
-  .fishka13{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-    top: 80vh;
-    left: 10vh;
-  
+  .timer1{
+    border-radius: 20px;
+    width: 50px;
+    height: 30px;
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 4px solid rgb(56, 45, 10);
+    background-color: #dbd196;
+    color: black;
+    top: 9%;
+    left: 10%;
+    position: absolute;
+    z-index: 4;
   }
-  .fishka14{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 15vh;
+  .timer2{
+    border-radius: 20px;
+    width: 50px;
+    height: 30px;
+    display: none;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    border: 4px solid rgb(56, 45, 10);
+    background-color: #dbd196;
+    color: black;
+    top: 9%;
+    right: 10%;
+    position: absolute;
+    z-index: 4;
   }
-  .fishka15{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 20vh;
+  .information1{
+    position: absolute;
+    font-weight: bold;
+    font-size: 18px;
+    bottom: 13%;
+    left: 1%;
+    display: none;
   }
-  .fishka16{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 25vh;
+  .information2{
+    position: absolute;
+    font-weight: bold;
+    font-size: 17px;
+    bottom: 13%;
+    left: 1%;
+    display: none;
   }
-  .fishka17{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 30vh;
+  .information3{
+    position: absolute;
+    font-weight: bold;
+    font-size: 19px;
+    bottom: 10%;
+    left: 1%;
+    display: none;
   }
-  .fishka18{
-  background-image: url(P1\ \(1\).png);
-  background-color: rgba(240, 248, 255, 0);
-  width: 80px;
-  height: 80px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 80vh;
-  left: 35vh;
+  .information4{
+    position: absolute;
+    font-weight: bold;
+    font-size: 19px;
+    bottom: 10%;
+    left: 1%;
+    display: none;
   }
-  
-  
-  .fishka21{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
+  .information5{
+    position: absolute;
+    font-weight: bold;
+    font-size: 40px;
+    bottom: 17%;
+    left: 10%;
+    right: 50%;
+    display: none;
+    background-color: #dbd196;
+    color: aliceblue;
+    text-decoration: none;
+    width: 40%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation-name: size;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  .information6{
+    position: absolute;
+    font-weight: bold;
+    font-size: 30px;
+    bottom: 50%;
+    left: 30%;
+    text-decoration: none;
+    width: 40%;
     height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0vh;
-  top: 71.7vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: none;
+    background-color: #dbd196;
+    border-radius: 20px;
+    z-index: 10;
   }
-  .fishka22{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
+  .information1eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 22px;
+    bottom: 13%;
+    left: 1%;
+    display: none;
+  }
+  .information2eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 22px;
+    bottom: 13%;
+    left: 1%;
+    display: none;
+  }
+  .information3eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 22px;
+    bottom: 10%;
+    left: 18%;
+    display: none;
+  }
+  .information4eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 22px;
+    bottom: 10%;
+    left: 1%;
+    display: none;
+  }
+  .information5eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 40px;
+    bottom: 17%;
+    left: 10%;
+    right: 50%;
+    display: none;
+    background-color: #dbd196;
+    color: aliceblue;
+    text-decoration: none;
+    width: 40%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation-name: size;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+  }
+  @keyframes size{
+    0%   {width: 335px; color: aqua;border-radius: 0%;}
+    25%  {width: 335px; color: rgb(253, 2, 232);}
+    50%  {width: 335px; color: rgb(0, 47, 255); border-radius: 50%;}
+    75%  {width: 335px; color: rgb(255, 0, 0);}
+    100% {width: 335px; color: aqua;border-radius: 0%;}
+  }
+  .information6eng{
+    position: absolute;
+    font-weight: bold;
+    font-size: 30px;
+    bottom: 50%;
+    left: 30%;
+    text-decoration: none;
+    width: 40%;
     height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 5vh;
-  top: 71.7vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: none;
+    background-color: #dbd196;
+    border-radius: 20px;
+    z-index: 10;
   }
-  .fishka23{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 10vh;
-  top: 71.7vh;
+  .container{
+      padding: 0;
+      margin-left: 0;
+      margin-right: 0;
+  margin-top: 15vh;
+  margin-bottom: 20vh;
+  height: auto;
+  width: 97%;
+  position: relative;
+  border: 5px solid rgb(41, 247, 178);
+  border-radius: 10px;
+  background-color: antiquewhite;
   }
-  .fishka24{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 15vh;
-  top: 71.7vh;
+  footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(157, 236, 236);
+    position: absolute;
+    width: 96%;
+    padding: 0 2%;
+    bottom: 0px;
+    height: 60px;
+    font-size: 12px;
   }
-  .fishka25{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 20vh;
-  top: 71.7vh;
+  .socSet{
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    bottom: 2px;
+    left: 45%;
   }
-  .fishka26{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 25vh;
-  top: 71.7vh;
+  .socSet:hover{
+    color: rgb(255, 253, 253);
   }
-  .fishka27{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
-    background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 30vh;
-  top: 71.7vh;
+  .btnLang{
+    background-color: #dbd196;
+    color: rgb(59, 57, 25);
+    width: 37%;
+    height: 55px;
+    top: 1px;
+    right: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
   }
-  .fishka28{
-    background-image: url(P1\ \(2\).png);
-    background-color: rgba(240, 248, 255, 0);
-    width: 80px;
-  height: 80px;
+  .btnLang:hover{
+    background-color: rgb(59, 57, 25);
+    color: #dbd196;
+  }
+  .myBtn{
+    background-color: #dbd196;
+    color: rgb(59, 57, 25);
+    width: 37%;
+    height: 55px;
+    top: 1px;
+    left: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: cell;
+    border-radius: 5px;
+  }
+  .myBtnEng{
+    background-color: #dbd196;
+    color: rgb(59, 57, 25);
+    width: 37%;
+    height: 55px;
+    top: 1px;
+    left: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: cell;
+    border-radius: 5px;
+    display: none;
+  }
+  .darkSide{
+    background-color: #dbd196;
+    color: rgb(59, 57, 25);
+    width: 37%;
+    height: 45px;
+    top: 57px;
+    right: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: cell;
+    border-radius: 5px;
+    
+  }
+  .winSecondEnd{
+    width: 8.5%;
+    height: 5%;
+    left: 7%;
+    top: 77%;
+    position: absolute;
     background-size: cover;
-    background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 35vh;
-  top: 71.7vh;
+    background-image: url(Fishka2.png);
+    z-index: 3;
+    animation-name: square;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    border-radius: 40%;
+    display: none;
+  }
+  .winSecondEnd2{
+    left: 85%;
+  }
+  .winFirstEnd{
+    width: 8.5%;
+    height: 5%;
+    left: 7%;
+    top: 77%;
+    position: absolute;
+    background-size: cover;
+    background-image: url(Fishka1.png);
+    z-index: 3;
+    animation-name: square;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    border-radius: 40%;
+    display: none;
+  }
+  .winFirstEnd2{
+    left: 85%;
+  }
+  @keyframes square {
+    0%   {transform: rotate(360deg)}
+    25%  {transform: rotate(0deg)}
+    50%  {transform: rotate(360deg)}
+    75%  {transform: rotate(0deg)}
+    100% {transform: rotate(360deg)}
   }
 }
