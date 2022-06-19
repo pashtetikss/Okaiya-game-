@@ -2,6 +2,7 @@ let cell = []
 let first = 1
 let JZ=0
 let turn = 1
+let turn2 = 1
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
 let btnLang = document.getElementById("btnLang")
@@ -10,16 +11,93 @@ let information1=document.querySelector(".information1")
 let information2=document.querySelector(".information2")
 let information3=document.querySelector(".information3")
 let information4=document.querySelector(".information4")
+let information5=document.querySelector(".information5")
+let information6=document.querySelector(".information6")
 let rules = document.querySelector(".rules")
 let start = document.querySelector(".footer__start")
 let author = document.querySelector(".footer__author")
 let timer1=document.querySelector(".timer1")
 let timer2=document.querySelector(".timer2")
 const mediaQuery = window.matchMedia('(max-width: 768px)')
+const AnimationWinFirst = document.querySelector(".winFirstEnd")
+const AnimationWinFirst2 = document.querySelector(".winFirstEnd2")
+const AnimationWinSecond = document.querySelector(".winSecondEnd")
+const AnimationWinSecond2 = document.querySelector(".winSecondEnd2")
+const darkSide = document.querySelector(".darkSide")
+const footer = document.querySelector("footer")
+//let introdution
+ const socket = new WebSocket("ws://localhost:80/okaiya-game");
 
+ socket.onopen = () => {
+   socket.send(JSON.stringify({       
+         event: "login"      
+    }))
+ }
+
+ socket.onmessage = (res) => {
+   const msg = JSON.parse(res.data)
+   if(msg.action === "move"){
+     if(msg.data==0){
+      show0()
+     }
+     else if(msg.data==1){
+      show1()
+     }
+     else if(msg.data==2){
+      show2()
+     }
+     else if(msg.data==3){
+      show3()
+     }
+     else if(msg.data==4){
+      show4()
+     }
+     else if(msg.data==5){
+      show5()
+     }
+     else if(msg.data==6){
+      show6()
+     }
+     else if(msg.data==7){
+      show7()
+     }
+     else if(msg.data==8){
+      show8()
+     }
+     else if(msg.data==9){
+      show9()
+     }
+     else if(msg.data==10){
+      show10()
+     }
+     else if(msg.data==11){
+      show11()
+     }
+     else if(msg.data==12){
+      show12()
+     }
+     else if(msg.data==13){
+      show13()
+     }
+     else if(msg.data==14){
+      show14()
+     }
+     else if(msg.data==15){
+      show15()
+     }
+   }
+ }
+ 
+//introdution = prompt("Имя введи", "default");
+
+let nowTurn = 0
+
+let times1
+let times2
 
 let time1 = 0;
 let time2 = 0;
+let isDarkSide = false
 
 information1.style.display = "flex"
 
@@ -27,20 +105,70 @@ const body = document.querySelector("body")
 const container = document.querySelector(".container")
 let isRu = true
 
+darkSide.onclick = function(){
+if(!isDarkSide){
+   body.style.backgroundColor = "#383525"
+   footer.style.backgroundColor = "#dbd196"
+   AnimationWinFirst.style.backgroundColor = "#383525"
+   AnimationWinFirst2.style.backgroundColor = "#383525"
+   AnimationWinSecond.style.backgroundColor = "#383525"
+   AnimationWinSecond2.style.backgroundColor = "#383525"
+   container.style.backgroundColor = "#dbd196"
+   isDarkSide = true
+}
+else if(isDarkSide){
+   body.style.backgroundColor = "white"
+   footer.style.backgroundColor = "rgb(157, 236, 236)"
+   AnimationWinFirst.style.backgroundColor = "white"
+   AnimationWinFirst2.style.backgroundColor = "white"
+   AnimationWinSecond.style.backgroundColor = "white"
+   AnimationWinSecond2.style.backgroundColor = "white"
+   container.style.backgroundColor = "antiquewhite"
+   isDarkSide = false
+}
+}
+
 btnLang.onclick = function (){
 start.style.display = "none"
 author.style.display = "none"
-   if(isRu==false){
+   if(!isRu){
    isRu = true
 information1.style.display = "none"
 information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
+information5.style.display = "none"
+information6.style.display = "none"
 information1=document.querySelector(".information1")
 information2=document.querySelector(".information2")
 information3=document.querySelector(".information3")
 information4=document.querySelector(".information4")
-information1.style.display = "flex"
+information5=document.querySelector(".information5")
+information6=document.querySelector(".information6")
+if(isDraw){
+   information6.style.display = "flex"
+   information1.style.display = "none" 
+   information2.style.display = "none" 
+   information5.style.display = "flex"
+   AnimationWinSecond.style.display = "flex"
+   AnimationWinFirst2.style.display = "flex"
+   AnimationWinFirst.style.display = "none"
+   AnimationWinSecond2.style.display = "none" 
+}
+if((nowTurn==1 || nowTurn==0)&& !isWin){
+   information1.style.display = "flex" 
+}
+if(nowTurn==2 && isWin==false){
+   information2.style.display = "flex" 
+}
+if((nowTurn==1 || nowTurn==0) && isWin){
+   information4.style.display = "flex"
+   information5.style.display = "flex"
+}
+if(nowTurn==2 && isWin){
+   information3.style.display = "flex" 
+   information5.style.display = "flex"
+}
 btn.style.display = "none"
 rules.style.display = "none"
 btn = document.getElementById("myBtn")
@@ -61,11 +189,38 @@ information1.style.display = "none"
 information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
+information5.style.display = "none"
+information6.style.display = "none"
 information1=document.querySelector(".information1eng")
 information2=document.querySelector(".information2eng")
 information3=document.querySelector(".information3eng")
 information4=document.querySelector(".information4eng")
-information1.style.display = "flex"
+information5=document.querySelector(".information5eng")
+information6=document.querySelector(".information6eng")
+if(isDraw){
+   information6.style.display = "flex"
+   information1.style.display = "none" 
+   information2.style.display = "none"
+   information5.style.display = "flex" 
+   AnimationWinFirst.style.display = "flex"
+   AnimationWinSecond2.style.display = "flex" 
+   AnimationWinSecond.style.display = "none"
+   AnimationWinFirst2.style.display = "none"
+}
+if((nowTurn==1 || nowTurn==0) && !isWin){
+   information1.style.display = "flex" 
+}
+if(nowTurn==2 && !isWin){
+   information2.style.display = "flex" 
+}
+if((nowTurn==1 || nowTurn==0) && isWin){
+   information4.style.display = "flex" 
+   information5.style.display = "flex"
+}
+if(nowTurn==2 && isWin){
+   information3.style.display = "flex"
+   information5.style.display = "flex" 
+}
 btn.style.display = "none"
 rules.style.display = "none"
 btn = document.getElementById("myBtnEng")
@@ -83,9 +238,6 @@ author.style.display = "inline"
    }
 }
 
-
-let times1
-let times2
 
  function Times1() {
    times1 = setInterval(function(){
@@ -112,18 +264,13 @@ window.onclick = function(event){
    }
 }
 
-const row1 = document.createElement("div")
-const row2 = document.createElement("div")
-const row3 = document.createElement("div")
-const row4 = document.createElement("div")
-row1.classList.add("row");
-row2.classList.add("row");
-row3.classList.add("row");
-row4.classList.add("row");
-container.appendChild(row1)
-container.appendChild(row2)
-container.appendChild(row3)
-container.appendChild(row4)
+let rows = []
+for (let i=0; i<4; i++) {
+   const row = document.createElement("div")
+   row.classList.add("row")
+   container.appendChild(row)
+   rows.push(row)
+}
 
 let fishkas1 = []
 let fishkas2 = []
@@ -179,22 +326,22 @@ fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
 fishkas2[0].style.border= "5px solid Blue"
 
 function delete1(){
+   nowTurn = 1
    clearInterval(times1)
    Times2()
    d++ 
    information2.style.display = "none" 
    information1.style.display = "flex"
-   for(i=0; i<8; i++){
-      if(d==i){
-         fishkas1[i].remove()
-         fishkas2[i+1].style.backgroundColor = "Cyan"
-         fishkas2[i+1].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
-         fishkas2[i+1].style.border= "5px solid Blue"
-      } 
-   }
+         fishkas1[d].remove()
+         if(d<7){
+            fishkas2[d+1].style.backgroundColor = "Cyan"
+         fishkas2[d+1].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
+         fishkas2[d+1].style.border= "5px solid Blue" 
+         }       
 }
 
 function delete2(){
+   nowTurn = 2
    clearInterval(times2)
    Times1();
    d2++
@@ -220,38 +367,20 @@ j.push(1)
   for(i=0;i<=15;i++){    
     array.push(i)
  }
- for(let countCycles=0;countCycles<=3;countCycles++){
-    let finish = array.splice(Math.random()*array.length,1)[0]
-    //console.log(finish)
-    cell[countCycles] = document.createElement("div")
-    //newElement.innerHTML = cell[countCycles]
-    cell[countCycles].classList.add(`newElement${finish}`);
-    row1.appendChild(cell[countCycles])
- }
- for(let countCycles=4;countCycles<=7;countCycles++){
-    let finish = array.splice(Math.random()*array.length,1)[0]
-   // console.log(finish)
-    cell[countCycles] = document.createElement("div")
-    //newElement.innerHTML = cell[countCycles]
-    cell[countCycles].classList.add(`newElement${finish}`);
-    row2.appendChild(cell[countCycles])
- }
- for(let countCycles=8;countCycles<=11;countCycles++){
-    let finish = array.splice(Math.random()*array.length,1)[0]
-    //console.log(finish)
-    cell[countCycles] = document.createElement("div")
-    //newElement.innerHTML = cell[countCycles]
-    cell[countCycles].classList.add(`newElement${finish}`);
-    row3.appendChild(cell[countCycles])
- }
- for(let countCycles=12;countCycles<=15;countCycles++){
-    let finish = array.splice(Math.random()*array.length,1)[0]
-    //console.log(finish)
-    cell[countCycles] = document.createElement("div")
-    //newElement.innerHTML = cell[countCycles]
-    cell[countCycles].classList.add(`newElement${finish}`);
-    row4.appendChild(cell[countCycles])
- }
+
+
+let rowCount = 0
+let finish = 0
+
+for(let i = 0; i<=15; i++){
+    finish = array.splice(Math.random()*array.length,1)[0]
+    cell[i] = document.createElement("div")
+    cell[i].classList.add(`newElement${finish}`);
+    rows[rowCount].appendChild(cell[i])
+if(i==3 || i==7 || i==11){   
+    rowCount++  
+}
+}
 
 let jpg = []
 for(i=0;i<16;i++){
@@ -279,34 +408,52 @@ if(first==1){
 JZ=1
 }
 }
+checkWinNoTurn = []
+for(i=0; i<16; i++){
+   checkWinNoTurn.push(0)
+   }
+
+let allowedIds=[]
 
    jpg[0].addEventListener("click", show0)
    function show0(){
+      allowedIds[0] = [1,2,3,4,8,12]
       if(j[1]==1 || j[2]==1 || j[3]==1 || j[4]==1 || j[8]==1 || j[12]==1){
       let check = jpg[0].classList
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
-      j[0] = 1
+      j[0] = 1 
+      try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 0
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[0] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
       body.appendChild(o)
-      
       if (turn % 2 == 0){
          jpg[0].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[0].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin0(turn)
+      }
       else{
-         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
-         else alert("Your move doesn't follow the rules")
+         if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
    }}
@@ -319,6 +466,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[1] = 1
+      try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 1
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[1] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -327,17 +484,19 @@ JZ=1
          jpg[1].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[1].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+           delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin1(turn)
+      }
       else{
-         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
-         else alert("Your move doesn't follow the rules")
+         if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
    }}
@@ -350,6 +509,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[2] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 2
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[2] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -358,17 +527,19 @@ JZ=1
          jpg[2].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[2].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin2(turn)
+      }
       else{
-         if(isRu==true)          if(isRu==true) alert("Ваш ход не соответсвует правилам")
-         else alert("Your move doesn't follow the rules")
+         if(isRu==true)alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
    }}
@@ -380,6 +551,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[3] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 3
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[3] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -388,14 +569,17 @@ JZ=1
          jpg[3].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[3].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin3(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -409,6 +593,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[4] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 4
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[4] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -417,14 +611,17 @@ JZ=1
          jpg[4].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[4].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin4(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -438,6 +635,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[5] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 5
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[5] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -446,14 +653,17 @@ JZ=1
          jpg[5].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[5].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin5(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -467,6 +677,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[6] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 6
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[6] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -475,14 +695,17 @@ JZ=1
          jpg[6].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[6].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin6(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -496,6 +719,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[7] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 7
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[7] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -504,14 +737,17 @@ JZ=1
          jpg[7].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[7].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin7(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -525,6 +761,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[8] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 8
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[8] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -533,14 +779,17 @@ JZ=1
          jpg[8].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[8].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin8(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -554,6 +803,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[9] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 9
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[9] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -562,14 +821,17 @@ JZ=1
          jpg[9].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[9].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin9(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -586,6 +848,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[10] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 10
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[10] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -594,14 +866,17 @@ JZ=1
          jpg[10].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[10].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin10(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -615,6 +890,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
       obnul()
       j[11] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 11
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[11] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
       o.classList.add("o")
@@ -623,14 +908,17 @@ JZ=1
          jpg[11].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[11].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin11(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -645,22 +933,34 @@ JZ=1
          let o = document.createElement("div")
          obnul()
       j[12] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 12
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[12] = 1
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
          body.appendChild(o)
-
       if (turn % 2 == 0){
          jpg[12].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[12].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin12(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -675,6 +975,16 @@ JZ=1
          let o = document.createElement("div")
          obnul()
          j[13] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 13
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[13] = 1
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
          body.appendChild(o)
@@ -682,14 +992,17 @@ JZ=1
          jpg[13].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[13].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin13(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
@@ -703,6 +1016,16 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
          obnul()
          j[14] = 1
+       try{
+         socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 14
+         
+    }))}catch(err){
+      console.log(err)
+      }//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[14] = 1
          let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
@@ -711,19 +1034,23 @@ JZ=1
          jpg[14].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[14].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin14(turn)
+      }
       else{
-                  if(isRu==true) alert("Ваш ход не соответсвует правилам")
+         if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
+}
 
    jpg[15].addEventListener("click", show15)
    function show15(){
@@ -732,6 +1059,13 @@ JZ=1
       if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
          obnul()
       j[15] = 1
+      socket.send(JSON.stringify({
+   
+         event: "move",
+         data: 15
+         
+    }))//ЗАПРОС НА СЕРВЕР
+      checkWinNoTurn[15] = 1
          let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
@@ -740,21 +1074,22 @@ JZ=1
          jpg[15].classList.add("click1pl")
          turn++
          delete1()
-         checkFinish()
+         checkFinish(turn)
          }
          else {         
          jpg[15].classList.add("click2pl")
          turn++
-         delete2()
-         checkFinish()
-         }}
+          delete2()
+         checkFinish(turn)
+         }
+         turn2++
+         noTurnWin15(turn)
+      }
       else{
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
    }}
-
-   
 
 function obnul(){
    for(i=0;i<16; i++){
@@ -772,8 +1107,10 @@ for(i=3;i<19;i++){
 }
 
 let checkClass = []
+let CheckDraw
+let isDraw = false
 
-function checkFinish(){
+function checkFinish(turn){
    for(i=0;i<16; i++){
       checkClass[i] = cell[i].classList
       if (checkClass[i][1] == "click1pl"){
@@ -784,34 +1121,206 @@ function checkFinish(){
       }
    }  
    first=0
-   finishend()
+   finishend(turn) 
+   if(turn==17){
+      isDraw = true
+      clearInterval(times2)
+      clearInterval(times1)
+      obnul() 
+      information6.style.display = "flex"
+      information1.style.display = "none" 
+      information2.style.display = "none" 
+      information5.style.display = "flex"
+      AnimationWinSecond.style.display = "flex"
+      AnimationWinFirst2.style.display = "flex" 
+   }
 }
+
 
 function finishend() {
    if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3] || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7] || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11] || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15] || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12] || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13] || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14] || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15] || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12] || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15] || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5] || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6] || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7] || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9] || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10] || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11] || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13] || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14] || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15])
    {
       if(c[0]==c[1]&&c[1]==c[2]&&c[2]==c[3]&&c[0]==1 || c[4]==c[5]&&c[5]==c[6]&&c[6]==c[7]&&c[4]==1 || c[8]==c[9]&&c[9]==c[10]&&c[10]==c[11]&&c[8]==1 || c[12]==c[13]&&c[13]==c[14]&&c[14]==c[15]&&c[12]==1 || c[0]==c[4]&&c[4]==c[8]&&c[8]==c[12]&&c[0]==1 || c[1]==c[5]&c[5]==c[9]&&c[9]==c[13]&&c[1]==1 || c[2]==c[6]&&c[6]==c[10]&&c[10]==c[14]&&c[2]==1 || c[3]==c[7]&&c[7]==c[11]&&c[11]==c[15]&&c[3]==1 || c[3]==c[6]&&c[6]==c[9]&&c[9]==c[12]&&c[3]==1 || c[0]==c[5]&&c[5]==c[10]&&c[10]==c[15]&&c[0]==1 || c[0]==c[1]&&c[1]==c[4]&&c[4]==c[5]&&c[0]==1 || c[1]==c[2]&&c[2]==c[5]&&c[5]==c[6]&&c[1]==1 || c[2]==c[3]&&c[3]==c[6]&&c[6]==c[7]&&c[2]==1 || c[4]==c[5]&&c[5]==c[8]&&c[8]==c[9]&&c[4]==1 || c[5]==c[6]&&c[6]==c[9]&&c[9]==c[10]&&c[5]==1 || c[6]==c[7]&&c[7]==c[10]&&c[10]==c[11]&&c[6]==1 || c[8]==c[9]&&c[9]==c[12]&&c[12]==c[13]&&c[8]==1 || c[9]==c[10]&&c[10]==c[13]&&c[13]==c[14]&&c[9]==1 || c[10]==c[11]&&c[11]==c[14]&&c[14]==c[15]&&c[10]==1){
-         if(isRu==true){
-            alert("Выиграл второй игрок(Фиолетовые фишки)")
-         }
-         if(isRu==false){
-            alert("Second player wins(Purple chips)")
-         }
-        information1.style.display = "none" 
-      information2.style.display = "none" 
-      information4.style.display = "flex" 
+         winFirst()
       }
-      else{
-         if(isRu==true){
-            alert("Выиграл первый игрок(Золотые фишки)")
-         }
-         if(isRu==false){
-            alert("First player wins(Golden chips)")
-         }
-        information1.style.display = "none" 
-      information2.style.display = "none" 
-        information3.style.display = "flex"
-      } 
-      obnul() 
+      else winSecond()  
+      
+      isWin=true
    }   
 }
+let isWin = false
+function winSecond(){
+   information1.style.display = "none" 
+   information2.style.display = "none" 
+   information3.style.display = "flex" 
+   information4.style.display = "none"  
+   information5.style.display = "flex" 
+   container.style.animation = "ramka1 3s infinite";
+   clearInterval(times2)
+      clearInterval(times1)
+      obnul() 
+      isWin=true
+      AnimationWinFirst.style.display = "flex"
+      AnimationWinFirst2.style.display = "flex"    
+}
+function winFirst(){
+   information1.style.display = "none" 
+   information2.style.display = "none" 
+   information3.style.display = "none" 
+   information4.style.display = "flex"
+   information5.style.display = "flex" 
+   clearInterval(times2)
+      clearInterval(times1)
+      obnul()  
+      isWin=true
+      AnimationWinSecond.style.display = "flex"
+      AnimationWinSecond2.style.display = "flex"
+      container.style.animation = "ramka2 3s infinite";
+}
+function noTurnWin0(turn){
+   if(checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 &&checkWinNoTurn[2] == 1 &&checkWinNoTurn[3] == 1 &&checkWinNoTurn[4] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[12] == 1){
+      if(turn % 2 == 0 && turn<17) winSecond()
+      if(turn % 2 !== 0) winFirst() 
+   }
+   else if(turn2==17){
+      information6.style.display = "flex" 
+   }
+}
+function noTurnWin1(turn){
+if(checkWinNoTurn[1] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[13] == 1){
+   if(turn % 2 == 0 && turn<17)  winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin2(turn){
+if(checkWinNoTurn[2] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[14] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   if(turn % 2 !== 0) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin3(turn){ 
+if(checkWinNoTurn[3] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[15] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+}  
+function noTurnWin4(turn){
+if(checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[12] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+}  
+function noTurnWin5(turn){
+if(checkWinNoTurn[5] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[13] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin6(turn){
+if(checkWinNoTurn[6] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[14] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+}  
+function noTurnWin7(turn){
+if(checkWinNoTurn[7] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[15] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+}  
+function noTurnWin8(turn){
+if(checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[12] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+}  
+function noTurnWin9(turn){
+if(checkWinNoTurn[9] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[13] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin10(turn){
+if(checkWinNoTurn[10] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[11] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[14] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin11(turn){
+if(checkWinNoTurn[11] == 1 && checkWinNoTurn[8] == 1 && checkWinNoTurn[9] == 1 && checkWinNoTurn[10] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[15] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin12(turn){
+if(checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[0] == 1 && checkWinNoTurn[4] == 1 && checkWinNoTurn[8] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin13(turn){
+if(checkWinNoTurn[13] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[1] == 1 && checkWinNoTurn[5] == 1 && checkWinNoTurn[9] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+} 
+}
+function noTurnWin14(turn){
+if(checkWinNoTurn[14] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[15] == 1 && checkWinNoTurn[2] == 1 && checkWinNoTurn[6] == 1 && checkWinNoTurn[10] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+}
+} 
+function noTurnWin15(turn){
+if(checkWinNoTurn[15] == 1 && checkWinNoTurn[12] == 1 && checkWinNoTurn[13] == 1 && checkWinNoTurn[14] == 1 && checkWinNoTurn[3] == 1 && checkWinNoTurn[7] == 1 && checkWinNoTurn[11] == 1){
+   if(turn % 2 == 0 && turn<17) winSecond()
+   else if (turn % 2 !== 0 && turn<17) winFirst() 
+}
+else if(turn2==17){
+   information6.style.display = "flex" 
+} 
+} 
+
+
+
