@@ -3,6 +3,7 @@ let first = 1
 let JZ=0
 let turn = 1
 let turn2 = 1
+let isYouTurn = true
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
 let btnLang = document.getElementById("btnLang")
@@ -26,70 +27,128 @@ const AnimationWinSecond2 = document.querySelector(".winSecondEnd2")
 const darkSide = document.querySelector(".darkSide")
 const footer = document.querySelector("footer")
 //let introdution
- const socket = new WebSocket("ws://localhost:80/okaiya-game");
-
+let finish = []
+let j = []
+let check
+ const socket = new WebSocket("wss://okaiya.herokuapp.com/ws/");
+ 
  socket.onopen = () => {
    socket.send(JSON.stringify({       
          event: "login"      
     }))
  }
 
+ 
  socket.onmessage = (res) => {
-   const msg = JSON.parse(res.data)
-   if(msg.action === "move"){
+   try {
+      //console.log(res.data)
+      const msg = JSON.parse(res.data)
+      //console.log(msg)
+      if(msg.event === "login"){
+       //console.log(msg.data)      
+           // finish = msg.data      
+        // finish.push(msg.data)
+        for(let i=0; i < 16; i++){
+         finish.push(msg.data[i])
+        }
+        
+      }
+   if(msg.event === "move"){
+      obnul()
      if(msg.data==0){
+      j[0] = 1
+      isYouTurn = false
       show0()
      }
      else if(msg.data==1){
+      j[1] = 1
+      isYouTurn = false
       show1()
      }
      else if(msg.data==2){
+      j[2] = 1
+      isYouTurn = false
       show2()
      }
      else if(msg.data==3){
+      j[3] = 1
+      isYouTurn = false
       show3()
      }
      else if(msg.data==4){
+      j[4] = 1
+      isYouTurn = false
       show4()
      }
      else if(msg.data==5){
+      j[5] = 1
+      isYouTurn = false
       show5()
      }
      else if(msg.data==6){
+      j[6] = 1
+      isYouTurn = false
       show6()
      }
      else if(msg.data==7){
+      j[7] = 1
+      isYouTurn = false
       show7()
      }
      else if(msg.data==8){
+      j[8] = 1
+      isYouTurn = false
       show8()
      }
      else if(msg.data==9){
+      j[9] = 1
+      isYouTurn = false
       show9()
      }
      else if(msg.data==10){
+      j[10] = 1
+      isYouTurn = false
       show10()
      }
      else if(msg.data==11){
+      j[11] = 1
+      isYouTurn = false
       show11()
      }
      else if(msg.data==12){
+      j[12] = 1
+      isYouTurn = false
       show12()
      }
      else if(msg.data==13){
+      j[13] = 1
+      isYouTurn = false
       show13()
      }
      else if(msg.data==14){
+      j[14] = 1
+      isYouTurn = false
       show14()
      }
      else if(msg.data==15){
+      j[15] = 1
+      isYouTurn = false
       show15()
      }
    }
+   } catch (error) {
+      // console.log(err)
+   } 
+   
+   
  }
  
 //introdution = prompt("Имя введи", "default");
-
+setTimeout(() => {
+   console.log(finish[0])
+}, 1700)
+//let fric = Array.isArray(finish)
+//console.log(fric)
 let nowTurn = 0
 
 let times1
@@ -357,7 +416,7 @@ function delete2(){
    } 
 }
 
-let j = []
+
 for(i=0;i<16;i++){
 j.push(1)
 }
@@ -370,25 +429,29 @@ j.push(1)
 
 
 let rowCount = 0
-let finish = 0
 
+setTimeout(() => {
 for(let i = 0; i<=15; i++){
-    finish = array.splice(Math.random()*array.length,1)[0]
+    //let fanish = finish[i]
+    //finish = array.splice(Math.random()*array.length,1)[0]
     cell[i] = document.createElement("div")
-    cell[i].classList.add(`newElement${finish}`);
+    cell[i].classList.add(`newElement${finish[i]}`);
     rows[rowCount].appendChild(cell[i])
 if(i==3 || i==7 || i==11){   
     rowCount++  
 }
 }
-
+}, 1700)
 let jpg = []
+setTimeout(() => {
 for(i=0;i<16;i++){
    jpg.push(document.querySelector(`.newElement${i}`))
 
 }
- let possibility = [jpg[0], jpg[1], jpg[2], jpg[3], jpg[4], jpg[5], jpg[6], jpg[7], jpg[8], jpg[9], jpg[10], jpg[11], jpg[12], jpg[13], jpg[14], jpg[15]]
+}, 1700)
+//  let possibility = [jpg[0], jpg[1], jpg[2], jpg[3], jpg[4], jpg[5], jpg[6], jpg[7], jpg[8], jpg[9], jpg[10], jpg[11], jpg[12], jpg[13], jpg[14], jpg[15]]
 
+setTimeout(() => {
 for(i=0; i<16; i++){
 cell[i].addEventListener("click", firstTurn0)
 }
@@ -408,30 +471,34 @@ if(first==1){
 JZ=1
 }
 }
+}, 1700)
 checkWinNoTurn = []
 for(i=0; i<16; i++){
    checkWinNoTurn.push(0)
    }
 
 let allowedIds=[]
-
+setTimeout(() => {
    jpg[0].addEventListener("click", show0)
+}, 1700)
    function show0(){
-      allowedIds[0] = [1,2,3,4,8,12]
-      if(j[1]==1 || j[2]==1 || j[3]==1 || j[4]==1 || j[8]==1 || j[12]==1){
-      let check = jpg[0].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[0] = 1 
-      try{
-         socket.send(JSON.stringify({
-   
-         event: "move",
-         data: 0
-         
-    }))}catch(err){
-      console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+      check = jpg[0].classList
+      if((j[0]==1 || j[1]==1 || j[2]==1 || j[3]==1 || j[4]==1 || j[8]==1 || j[12]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+      
+      if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
+      
+            event: "move",
+            data: 0
+            
+       }))}catch(err){
+         console.log(err)
+         }//ЗАПРОС НА СЕРВЕР
+      } 
+      isYouTurn = true
       checkWinNoTurn[0] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -456,25 +523,29 @@ let allowedIds=[]
          if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
 
+   setTimeout(() => {
    jpg[1].addEventListener("click", show1)
+}, 1700)
    function show1(){
-      if(j[0]==1 || j[2]==1 || j[3]==1 || j[5]==1 || j[9]==1 || j[13]==1){
-      let check = jpg[1].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[1] = 1
-      try{
-         socket.send(JSON.stringify({
+      check = jpg[1].classList
+      if((j[1]==1 ||j[0]==1 || j[2]==1 || j[3]==1 || j[5]==1 || j[9]==1 || j[13]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+       if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 1
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[1] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -499,25 +570,28 @@ let allowedIds=[]
          if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
-
+   setTimeout(() => {
    jpg[2].addEventListener("click", show2)
+}, 1700)
    function show2(){
-      if(j[0]==1 || j[1]==1 || j[3]==1 || j[6]==1 || j[10]==1 || j[14]==1){
-      let check = jpg[2].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[2] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[2].classList
+      if((j[2]==1||j[0]==1 || j[1]==1 || j[3]==1 || j[6]==1 || j[10]==1 || j[14]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 2
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[2] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -542,24 +616,28 @@ let allowedIds=[]
          if(isRu==true)alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[3].addEventListener("click", show3)
+}, 1700)
    function show3(){
-      if(j[0]==1 || j[1]==1 || j[2]==1 || j[7]==1 || j[11]==1 || j[15]==1){
-      let check = jpg[3].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[3] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[3].classList
+      if((j[3]==1||j[0]==1 || j[1]==1 || j[2]==1 || j[7]==1 || j[11]==1 || j[15]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 3
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[3] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -584,17 +662,19 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[4].addEventListener("click", show4)
+}, 1700)
    function show4(){
-      if(j[5]==1 || j[6]==1 || j[7]==1 || j[0]==1 || j[8]==1 || j[12]==1){
-      let check = jpg[4].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[4] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[4].classList
+      if((j[4]==1||j[5]==1 || j[6]==1 || j[7]==1 || j[0]==1 || j[8]==1 || j[12]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 4
@@ -602,6 +682,8 @@ let allowedIds=[]
     }))}catch(err){
       console.log(err)
       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[4] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -626,24 +708,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
     jpg[5].addEventListener("click", show5)
+   }, 1700)
    function show5(){
-      if(j[4]==1 || j[6]==1 || j[7]==1 || j[1]==1 || j[9]==1 || j[13]==1){
-      let check = jpg[5].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[5] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[5].classList
+      if((j[5]==1||j[4]==1 || j[6]==1 || j[7]==1 || j[1]==1 || j[9]==1 || j[13]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 5
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[5] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -668,24 +754,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[6].addEventListener("click", show6)
+}, 1700)
    function show6(){
-      if(j[4]==1 || j[5]==1 || j[7]==1 || j[2]==1 || j[10]==1 || j[14]==1){
-      let check = jpg[6].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[6] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[6].classList
+      if((j[6]==1||j[4]==1 || j[5]==1 || j[7]==1 || j[2]==1 || j[10]==1 || j[14]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 6
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[6] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -710,24 +800,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[7].addEventListener("click", show7)
+}, 1700)
    function show7(){
-      if(j[4]==1 || j[5]==1 || j[6]==1 || j[3]==1 || j[11]==1 || j[15]==1){
-      let check = jpg[7].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[7] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[7].classList
+      if((j[7]==1|| j[4]==1 || j[5]==1 || j[6]==1 || j[3]==1 || j[11]==1 || j[15]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 7
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[7] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -752,24 +846,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[8].addEventListener("click", show8)
+}, 1700)
    function show8(){
-      if(j[9]==1 || j[10]==1 || j[11]==1 || j[0]==1 || j[4]==1 || j[12]==1){
-      let check = jpg[8].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[8] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[8].classList
+      if((j[8]==1||j[9]==1 || j[10]==1 || j[11]==1 || j[0]==1 || j[4]==1 || j[12]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 8
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[8] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -794,24 +892,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[9].addEventListener("click", show9)
+}, 1700)
    function show9(){
-      if(j[8]==1 || j[10]==1 || j[11]==1 || j[1]==1 || j[5]==1 || j[13]==1){
-      let check = jpg[9].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[9] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[9].classList
+      if((j[9]==1||j[8]==1 || j[10]==1 || j[11]==1 || j[1]==1 || j[5]==1 || j[13]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 9
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[9] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -836,27 +938,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
     jpg[10].addEventListener("click", show10)
+   }, 1700)
    function show10(){
-      if(j[8]==1 || j[9]==1 || j[11]==1 || j[2]==1 || j[6]==1 || j[14]==1){
-      let check = jpg[10].classList
-     
-     
-
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[10] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[10].classList
+      if((j[10]==1||j[8]==1 || j[9]==1 || j[11]==1 || j[2]==1 || j[6]==1 || j[14]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 10
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[10] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -881,24 +984,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[11].addEventListener("click", show11)
+}, 1700)
    function show11(){
-      if(j[8]==1 || j[9]==1 || j[10]==1 || j[3]==1 || j[7]==1 || j[15]==1){
-      let check = jpg[11].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-      obnul()
-      j[11] = 1
-       try{
-         socket.send(JSON.stringify({
+      check = jpg[11].classList
+      if((j[11]==1||j[8]==1 || j[9]==1 || j[10]==1 || j[3]==1 || j[7]==1 || j[15]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
+         obnul()
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 11
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[11] = 1
       let o = document.createElement("div")
       o.classList.add(`${check[0]}`)
@@ -923,26 +1030,31 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[12].addEventListener("click", show12)
+}, 1700)
    function show12(){
-      if(j[13]==1 || j[14]==1 || j[15]==1 || j[0]==1 || j[4]==1 || j[8]==1){
-      let check = jpg[12].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-         let o = document.createElement("div")
+      check = jpg[12].classList
+      if (( j[12]==1 || j[13]==1 || j[14]==1 || j[15]==1 || j[0]==1 || j[4]==1 || j[8]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        
+        if(isYouTurn){
          obnul()
-      j[12] = 1
-       try{
-         socket.send(JSON.stringify({
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 12
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[12] = 1
+      let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
          body.appendChild(o)
@@ -965,25 +1077,29 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[13].addEventListener("click", show13)
+}, 1700)
    function show13(){
-      if(j[12]==1 || j[14]==1 || j[15]==1 || j[1]==1 || j[5]==1 || j[9]==1){
-      let check = jpg[13].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
+      check = jpg[13].classList
+      if((j[13]==1 || j[12]==1 || j[14]==1 || j[15]==1 || j[1]==1 || j[5]==1 || j[9]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
          let o = document.createElement("div")
+        if(isYouTurn){
          obnul()
-         j[13] = 1
-       try{
-         socket.send(JSON.stringify({
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 13
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[13] = 1
          o.classList.add(`${check[0]}`)
          o.classList.add("o")
@@ -1007,24 +1123,28 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
+   setTimeout(() => {
    jpg[14].addEventListener("click", show14)
+}, 1700)
    function show14(){
-      if(j[12]==1 || j[13]==1 || j[15]==1 || j[2]==1 || j[6]==1 || j[10]==1){
-      let check = jpg[14].classList
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
+      check = jpg[14].classList
+      if((j[14]==1||j[12]==1 || j[13]==1 || j[15]==1 || j[2]==1 || j[6]==1 || j[10]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+        if(isYouTurn){
          obnul()
-         j[14] = 1
-       try{
-         socket.send(JSON.stringify({
+         try{
+            socket.send(JSON.stringify({
    
          event: "move",
          data: 14
          
     }))}catch(err){
       console.log(err)
-      }//ЗАПРОС НА СЕРВЕР
+       }//ЗАПРОС НА СЕРВЕР
+   }
+   isYouTurn = true
       checkWinNoTurn[14] = 1
          let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
@@ -1050,21 +1170,27 @@ let allowedIds=[]
          else alert("Your move doesn't follow the rules")
       }
    }
-}
 
+setTimeout(() => {
    jpg[15].addEventListener("click", show15)
+   }, 1700)
    function show15(){
-      if(j[12]==1 || j[13]==1 || j[14]==1 || j[3]==1 || j[7]==1 || j[11]==1){
-      let check = jpg[15].classList  
-      if(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1){
-         obnul()
-      j[15] = 1
-      socket.send(JSON.stringify({
-   
-         event: "move",
-         data: 15
-         
-    }))//ЗАПРОС НА СЕРВЕР
+      check = jpg[15].classList
+      if((j[15]==1||j[12]==1 || j[13]==1 || j[14]==1 || j[3]==1 || j[7]==1 || j[11]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
+         console.log("Функция сработала и прошла первую ступень провреки")
+         if(isYouTurn){
+            obnul()
+            try{
+               socket.send(JSON.stringify({
+      
+            event: "move",
+            data: 15
+            
+       }))}catch(err){
+         console.log(err)
+          }//ЗАПРОС НА СЕРВЕР
+      }
+      isYouTurn = true
       checkWinNoTurn[15] = 1
          let o = document.createElement("div")
          o.classList.add(`${check[0]}`)
@@ -1089,7 +1215,7 @@ let allowedIds=[]
                   if(isRu==true) alert("Ваш ход не соответсвует правилам")
          else alert("Your move doesn't follow the rules")
       }
-   }}
+   }
 
 function obnul(){
    for(i=0;i<16; i++){
@@ -1111,6 +1237,7 @@ let CheckDraw
 let isDraw = false
 
 function checkFinish(turn){
+   console.log(j)
    for(i=0;i<16; i++){
       checkClass[i] = cell[i].classList
       if (checkClass[i][1] == "click1pl"){
