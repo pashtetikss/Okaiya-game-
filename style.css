@@ -2,6 +2,49 @@
   margin: 0;
   padding: 0;
 }
+.WindowRooms{
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.959);
+}
+.btnAllRoom{
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 25%;
+  height: 40%;
+  top: 20%;
+  left: 37.5%;
+  position: absolute;
+  font-weight: bold;
+  cursor: cell;
+  border-radius: 20px;
+  font-size: 40px;
+  display: none;
+}
+.btnAllRoom:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.room{
+  width: 20%;
+  height: 200px;
+  margin-left: 4%;
+  margin-top: 5%;
+  background-color: rgb(113, 138, 219);
+  border-radius: 20px;
+  border: 5px solid rgb(0, 247, 255);
+  font-size: 30px;
+}
+.room:hover{
+  border: 5px solid rgb(113, 138, 219);
+  background-color: rgb(0, 247, 255);
+}
 .darkSide{
   position: absolute;
   right: 50px;
@@ -467,6 +510,9 @@ footer{
   position: absolute;
   right: 20px;
   top: 10px;
+}
+.close:hover{
+  color: rgb(117, 0, 0);
 }
 .fishka1{
   background-image: url(Fishka2.png);
@@ -940,6 +986,34 @@ background-repeat: no-repeat;
   background-color: rgb(107, 252, 252);
   z-index: 2;
   border-radius: 40px;
+}
+.btnAllRoom{
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 90%;
+  height: 40%;
+  top: 20%;
+  left:5%;
+  position: absolute;
+  font-weight: bold;
+  cursor: cell;
+  border-radius: 20px;
+  font-size: 40px;
+  display: none;
+}
+.btnAllRoom:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
+.room{
+  width: 30%;
+  height: 200px;
+  margin-left: 4%;
+  margin-top: 5%;
+  background-color: rgb(113, 138, 219);
+  border-radius: 20px;
+  border: 5px solid rgb(0, 247, 255);
+  font-size: 20px;
 }
 .o{
   position: absolute;

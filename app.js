@@ -6,14 +6,19 @@ let turn2 = 1
 let isYouTurn = true
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
+let btnAllRoom = document.getElementById("btnAllRoom")
+let WindowRooms = document.querySelector(".WindowRooms") 
 let btnLang = document.getElementById("btnLang")
 let span = document.getElementsByClassName("close")[0]
+let span2 = document.getElementsByClassName("close")[1]
 let information1=document.querySelector(".information1")
 let information2=document.querySelector(".information2")
 let information3=document.querySelector(".information3")
 let information4=document.querySelector(".information4")
 let information5=document.querySelector(".information5")
 let information6=document.querySelector(".information6")
+let fishka1=document.querySelector(".fishka1")
+let fishka2=document.querySelector(".fishka2")
 let rules = document.querySelector(".rules")
 let start = document.querySelector(".footer__start")
 let author = document.querySelector(".footer__author")
@@ -30,6 +35,7 @@ const footer = document.querySelector("footer")
 let finish = []
 let j = []
 let check
+let checkClassRooms
  const socket = new WebSocket("wss://okaiya.herokuapp.com/ws/");
  
  socket.onopen = () => {
@@ -43,14 +49,21 @@ let check
    try {
       //console.log(res.data)
       const msg = JSON.parse(res.data)
-      //console.log(msg)
+      if(msg.event === "join-room"){
+        // finish = msg.data.board
+        // CreateBoard(finish)
+        console.log(msg.data)
+        finish = msg.data.board
+        CreateBoard(finish)
+        btnAllRoom.style.display = "none"
+        information1.style.display = "flex"
+        WindowRooms.style.display = "none"
+        fishkas2[0].style.backgroundColor = "Cyan"
+         fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
+         fishkas2[0].style.border= "5px solid Blue"
+         
+      }
       if(msg.event === "login"){
-       //console.log(msg.data)      
-           // finish = msg.data      
-        // finish.push(msg.data)
-        for(let i=0; i < 16; i++){
-         finish.push(msg.data[i])
-        }
         
       }
    if(msg.event === "move"){
@@ -158,11 +171,78 @@ let time1 = 0;
 let time2 = 0;
 let isDarkSide = false
 
-information1.style.display = "flex"
+//information1.style.display = "flex"
 
 const body = document.querySelector("body")
 const container = document.querySelector(".container")
 let isRu = true
+let isRooms = true
+let room
+let Rooms = []
+rowsRooms = []
+let rowCount2 = 0
+
+let rows = []
+for (let i=0; i<4; i++) {
+   const row2 = document.createElement("div")
+   const row = document.createElement("div")
+   row.classList.add("row")
+   row2.classList.add("row")
+   container.appendChild(row)
+   WindowRooms.appendChild(row2)
+   rowsRooms.push(row2)
+   rows.push(row)
+}
+
+btnAllRoom.onclick = function(){
+      console.log("dasadsdadsa")
+      WindowRooms.style.display = "block"
+      if(isRooms){
+      for(i=0; i<9; i++){
+         room = document.createElement("button")
+         room.classList.add("room")
+         room.classList.add(`room${i}`)
+         WindowRooms.appendChild(room)
+         room.innerHTML = `Это комната ${i+1}`;
+         Rooms.push(room)
+         rowsRooms[rowCount2].appendChild(Rooms[i])
+         if(i==2 || i==5){   
+            rowCount2++  
+        }
+      } 
+      isRooms = false
+   }  
+   console.log(Rooms)
+   Rooms.forEach(item => {
+      
+      item.addEventListener('click', event => {
+         checkClassRooms = item.classList
+         for(i=0; i<9; i++){
+       if(checkClassRooms[1] == `room${i}`){
+         try{
+            console.log("adsdasd")
+            socket.send(JSON.stringify({
+      
+            event: "join-room",
+            data: {
+               "roomNumber": i
+           }            
+       }))}catch(err){
+         console.log(err)
+         }//ЗАПРОС НА СЕРВЕР
+       }
+         }
+      })
+   })
+}
+
+// for(i=0; i<9; i++){
+//    Rooms[i].onclick = function(){
+//       console.log(i)
+//    }
+// }
+
+
 
 darkSide.onclick = function(){
 if(!isDarkSide){
@@ -187,6 +267,8 @@ else if(isDarkSide){
 }
 }
 
+btnAllRoom.style.display = "block"
+
 btnLang.onclick = function (){
 start.style.display = "none"
 author.style.display = "none"
@@ -198,12 +280,14 @@ information3.style.display = "none"
 information4.style.display = "none"
 information5.style.display = "none"
 information6.style.display = "none"
+btnAllRoom.style.display = "none"
 information1=document.querySelector(".information1")
 information2=document.querySelector(".information2")
 information3=document.querySelector(".information3")
 information4=document.querySelector(".information4")
 information5=document.querySelector(".information5")
 information6=document.querySelector(".information6")
+btnAllRoom = document.getElementById("btnAllRoom")
 if(isDraw){
    information6.style.display = "flex"
    information1.style.display = "none" 
@@ -215,6 +299,7 @@ if(isDraw){
    AnimationWinSecond2.style.display = "none" 
 }
 if((nowTurn==1 || nowTurn==0)&& !isWin){
+   btnAllRoom.style.display = "block"
    information1.style.display = "flex" 
 }
 if(nowTurn==2 && isWin==false){
@@ -250,6 +335,7 @@ information3.style.display = "none"
 information4.style.display = "none"
 information5.style.display = "none"
 information6.style.display = "none"
+btnAllRoom.style.display = "none"
 information1=document.querySelector(".information1eng")
 information2=document.querySelector(".information2eng")
 information3=document.querySelector(".information3eng")
@@ -267,6 +353,7 @@ if(isDraw){
    AnimationWinFirst2.style.display = "none"
 }
 if((nowTurn==1 || nowTurn==0) && !isWin){
+   btnAllRoom.style.display = "block"
    information1.style.display = "flex" 
 }
 if(nowTurn==2 && !isWin){
@@ -315,21 +402,20 @@ btn.onclick = function (){
    modal.style.display = "block"
 }
 span.onclick = function (){
-   modal.style.display = "none"
+  // modal.style.display = "none"
+   WindowRooms.style.display = "none"
 }
+span2.onclick = function (){
+    modal.style.display = "none"
+    //WindowRooms.style.display = "none"
+ }
 window.onclick = function(event){
    if(event.target==modal){
       modal.style.display = "none"
    }
 }
 
-let rows = []
-for (let i=0; i<4; i++) {
-   const row = document.createElement("div")
-   row.classList.add("row")
-   container.appendChild(row)
-   rows.push(row)
-}
+
 
 let fishkas1 = []
 let fishkas2 = []
@@ -380,9 +466,7 @@ for(i=0; i<8; i++){
 let d = -1
 let d2 = -1
 
-fishkas2[0].style.backgroundColor = "Cyan"
-fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
-fishkas2[0].style.border= "5px solid Blue"
+
 
 function delete1(){
    nowTurn = 1
@@ -430,7 +514,7 @@ j.push(1)
 
 let rowCount = 0
 
-setTimeout(() => {
+function CreateBoard(finish){
 for(let i = 0; i<=15; i++){
     //let fanish = finish[i]
     //finish = array.splice(Math.random()*array.length,1)[0]
@@ -441,17 +525,20 @@ if(i==3 || i==7 || i==11){
     rowCount++  
 }
 }
-}, 1700)
+AddJpgInBoard()
+}
+
 let jpg = []
-setTimeout(() => {
+function AddJpgInBoard() {
 for(i=0;i<16;i++){
    jpg.push(document.querySelector(`.newElement${i}`))
 
 }
-}, 1700)
+CreateFirstTurnBan()
+}
 //  let possibility = [jpg[0], jpg[1], jpg[2], jpg[3], jpg[4], jpg[5], jpg[6], jpg[7], jpg[8], jpg[9], jpg[10], jpg[11], jpg[12], jpg[13], jpg[14], jpg[15]]
 
-setTimeout(() => {
+function CreateFirstTurnBan() {
 for(i=0; i<16; i++){
 cell[i].addEventListener("click", firstTurn0)
 }
@@ -471,17 +558,35 @@ if(first==1){
 JZ=1
 }
 }
-}, 1700)
+AddAllEventListener()
+}
 checkWinNoTurn = []
 for(i=0; i<16; i++){
    checkWinNoTurn.push(0)
    }
 
 let allowedIds=[]
-setTimeout(() => {
+function AddAllEventListener(){
    jpg[0].addEventListener("click", show0)
-}, 1700)
+   jpg[1].addEventListener("click", show1)
+   jpg[2].addEventListener("click", show2)
+   jpg[3].addEventListener("click", show3)
+   jpg[4].addEventListener("click", show4)
+   jpg[5].addEventListener("click", show5)
+   jpg[6].addEventListener("click", show6)
+   jpg[7].addEventListener("click", show7)
+   jpg[8].addEventListener("click", show8)
+   jpg[9].addEventListener("click", show9)
+   jpg[10].addEventListener("click", show10)
+   jpg[11].addEventListener("click", show11)
+   jpg[12].addEventListener("click", show12)
+   jpg[13].addEventListener("click", show13)
+   jpg[14].addEventListener("click", show14)
+   jpg[15].addEventListener("click", show15)
+}
+
    function show0(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[0].classList
       if((j[0]==1 || j[1]==1 || j[2]==1 || j[3]==1 || j[4]==1 || j[8]==1 || j[12]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -526,10 +631,11 @@ setTimeout(() => {
    }
 
 
-   setTimeout(() => {
-   jpg[1].addEventListener("click", show1)
-}, 1700)
+ 
+   
+
    function show1(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[1].classList
       if((j[1]==1 ||j[0]==1 || j[2]==1 || j[3]==1 || j[5]==1 || j[9]==1 || j[13]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -572,10 +678,11 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[2].addEventListener("click", show2)
-}, 1700)
+
+  
+
    function show2(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[2].classList
       if((j[2]==1||j[0]==1 || j[1]==1 || j[3]==1 || j[6]==1 || j[10]==1 || j[14]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -618,10 +725,11 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[3].addEventListener("click", show3)
-}, 1700)
+
+ 
+
    function show3(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[3].classList
       if((j[3]==1||j[0]==1 || j[1]==1 || j[2]==1 || j[7]==1 || j[11]==1 || j[15]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -664,10 +772,10 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[4].addEventListener("click", show4)
-}, 1700)
+
+
    function show4(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[4].classList
       if((j[4]==1||j[5]==1 || j[6]==1 || j[7]==1 || j[0]==1 || j[8]==1 || j[12]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -710,10 +818,11 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-    jpg[5].addEventListener("click", show5)
-   }, 1700)
+   
+
+   
    function show5(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[5].classList
       if((j[5]==1||j[4]==1 || j[6]==1 || j[7]==1 || j[1]==1 || j[9]==1 || j[13]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -756,10 +865,11 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[6].addEventListener("click", show6)
-}, 1700)
+
+
+
    function show6(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[6].classList
       if((j[6]==1||j[4]==1 || j[5]==1 || j[7]==1 || j[2]==1 || j[10]==1 || j[14]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -802,10 +912,11 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[7].addEventListener("click", show7)
-}, 1700)
+
+ 
+
    function show7(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[7].classList
       if((j[7]==1|| j[4]==1 || j[5]==1 || j[6]==1 || j[3]==1 || j[11]==1 || j[15]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -848,10 +959,11 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[8].addEventListener("click", show8)
-}, 1700)
+
+
+
    function show8(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[8].classList
       if((j[8]==1||j[9]==1 || j[10]==1 || j[11]==1 || j[0]==1 || j[4]==1 || j[12]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -894,10 +1006,10 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[9].addEventListener("click", show9)
-}, 1700)
+
+
    function show9(){
+      console.log("Функция сработала до начала проверки")
       check = jpg[9].classList
       if((j[9]==1||j[8]==1 || j[10]==1 || j[11]==1 || j[1]==1 || j[5]==1 || j[13]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
          console.log("Функция сработала и прошла первую ступень провреки")
@@ -940,9 +1052,8 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-    jpg[10].addEventListener("click", show10)
-   }, 1700)
+
+
    function show10(){
       check = jpg[10].classList
       if((j[10]==1||j[8]==1 || j[9]==1 || j[11]==1 || j[2]==1 || j[6]==1 || j[14]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
@@ -986,9 +1097,9 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[11].addEventListener("click", show11)
-}, 1700)
+
+ 
+
    function show11(){
       check = jpg[11].classList
       if((j[11]==1||j[8]==1 || j[9]==1 || j[10]==1 || j[3]==1 || j[7]==1 || j[15]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
@@ -1032,9 +1143,9 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[12].addEventListener("click", show12)
-}, 1700)
+
+  
+
    function show12(){
       check = jpg[12].classList
       if (( j[12]==1 || j[13]==1 || j[14]==1 || j[15]==1 || j[0]==1 || j[4]==1 || j[8]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
@@ -1079,9 +1190,9 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[13].addEventListener("click", show13)
-}, 1700)
+ 
+   
+
    function show13(){
       check = jpg[13].classList
       if((j[13]==1 || j[12]==1 || j[14]==1 || j[15]==1 || j[1]==1 || j[5]==1 || j[9]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
@@ -1125,9 +1236,9 @@ setTimeout(() => {
       }
    }
 
-   setTimeout(() => {
-   jpg[14].addEventListener("click", show14)
-}, 1700)
+   
+  
+
    function show14(){
       check = jpg[14].classList
       if((j[14]==1||j[12]==1 || j[13]==1 || j[15]==1 || j[2]==1 || j[6]==1 || j[10]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
@@ -1171,9 +1282,9 @@ setTimeout(() => {
       }
    }
 
-setTimeout(() => {
-   jpg[15].addEventListener("click", show15)
-   }, 1700)
+
+   
+   
    function show15(){
       check = jpg[15].classList
       if((j[15]==1||j[12]==1 || j[13]==1 || j[14]==1 || j[3]==1 || j[7]==1 || j[11]==1)&&(check[1] !== "click1pl" && check[1] !== "click2pl" && JZ!==1)){
