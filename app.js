@@ -68,6 +68,7 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
       fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
       fishkas2[0].style.border= "5px solid Blue"
          YouInGame =true
+         InfoAboutRoom.style.display = "flex"
          
       }
       if(msg.event === "login"){
