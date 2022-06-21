@@ -1371,4 +1371,18 @@ background-repeat: no-repeat;
     75%  {transform: rotate(0deg)}
     100% {transform: rotate(360deg)}
   }
+  .nameRoomInfo{
+    rotate: 0deg;
+    background-color: #302a0c;
+    color: rgb(223, 218, 153);
+    width: 37%;
+    height: 50px;
+    top: 8%;
+    left: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: cell;
+    border-radius: 5px;
+    font-size: 15.5px;
+  }
 }
