@@ -4,6 +4,8 @@ let JZ=0
 let turn = 1
 let turn2 = 1
 let isYouTurn = true
+let InfoAboutRoom = document.querySelector(".InfoAboutRoom")
+let numberRoomInfo = document.querySelector(".numberRoomInfo")
 let nameRoomInfo = document.querySelector(".nameRoomInfo")
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
@@ -37,6 +39,7 @@ let finish = []
 let j = []
 let check
 let checkClassRooms
+let YouInGame = false
 btnAllRoom.innerHTML = "Выбрать игровую комнату";
  const socket = new WebSocket("wss://okaiya.herokuapp.com/ws/");
  
@@ -54,6 +57,7 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
       if(msg.event === "join-room"){
         // finish = msg.data.board
         // CreateBoard(finish)
+        container.style.display = "block"
         console.log(msg.data)
         finish = msg.data.board
         CreateBoard(finish)
@@ -63,6 +67,7 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
       fishkas2[0].style.backgroundColor = "Cyan"
       fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
       fishkas2[0].style.border= "5px solid Blue"
+         YouInGame =true
          
       }
       if(msg.event === "login"){
@@ -221,7 +226,14 @@ btnAllRoom.onclick = function(){
          for(i=0; i<9; i++){
        if(checkClassRooms[1] == `room${i}`){
          try{
-            nameRoomInfo.innerHTML = `Сейчас вы находись в комнате №${i+1}`
+            if(isRu){
+               nameRoomInfo.innerHTML = "Комната "
+               numberRoomInfo.innerHTML = `№${i+1}`
+            }
+          if(!isRu){
+            nameRoomInfo.innerHTML = "Room "
+            numberRoomInfo.innerHTML = `№${i+1}`
+          }
             socket.send(JSON.stringify({
       
             event: "join-room",
@@ -254,6 +266,7 @@ if(!isDarkSide){
    AnimationWinSecond.style.backgroundColor = "#383525"
    AnimationWinSecond2.style.backgroundColor = "#383525"
    container.style.backgroundColor = "#dbd196"
+   InfoAboutRoom.style.backgroundColor = "#dbd196"
    isDarkSide = true
 }
 else if(isDarkSide){
@@ -264,6 +277,7 @@ else if(isDarkSide){
    AnimationWinSecond.style.backgroundColor = "white"
    AnimationWinSecond2.style.backgroundColor = "white"
    container.style.backgroundColor = "antiquewhite"
+   InfoAboutRoom.style.backgroundColor = "antiquewhite"
    isDarkSide = false
 }
 }
@@ -296,7 +310,8 @@ if(isDraw){
    AnimationWinFirst.style.display = "none"
    AnimationWinSecond2.style.display = "none" 
 }
-if((nowTurn==1 || nowTurn==0)&& !isWin){
+if((nowTurn==1 || nowTurn==0)&& !isWin && YouInGame){
+   nameRoomInfo.innerHTML = "Комната "
    information1.style.display = "flex" 
 }
 if(nowTurn==2 && isWin==false){
@@ -349,8 +364,9 @@ if(isDraw){
    AnimationWinSecond.style.display = "none"
    AnimationWinFirst2.style.display = "none"
 }
-if((nowTurn==1 || nowTurn==0) && !isWin){
-  // information1.style.display = "flex" 
+if((nowTurn==1 || nowTurn==0) && !isWin && YouInGame){
+   nameRoomInfo.innerHTML = "Room "
+   information1.style.display = "flex" 
 }
 if(nowTurn==2 && !isWin){
    information2.style.display = "flex" 

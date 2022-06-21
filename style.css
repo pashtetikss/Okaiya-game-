@@ -2,15 +2,19 @@
   margin: 0;
   padding: 0;
 }
-.nameRoomInfo{
-  rotate: 90deg;
+.InfoAboutRoom{
+  display: flex;
+  rotate: 0deg;
   background-color: antiquewhite;
   width: auto;
   height:auto;
-  bottom: 47%;
-  left: -330px;
+  bottom: 11%;
+  left: 7px;
   position: absolute;
   font-size: 50px;
+}
+.nameRoomInfo{
+  
 }
 .WindowRooms{
   display: none;
@@ -35,12 +39,25 @@
   cursor: cell;
   border-radius: 20px;
   font-size: 40px;
+  animation-fill-mode: both;
+  animation-name: AllRoom;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes AllRoom {
+  0%   {font-size: 40px; border: 5px solid rgb(90, 1, 1)}
+  25%  {font-size: 50px; border: 5px solid rgb(37, 90, 1)}
+  50%  {font-size: 40px; border: 5px solid rgb(1, 77, 90)}
+  75%  {font-size: 50px; border: 5px solid rgb(83, 1, 90)}
+  100% {font-size: 40px; border: 5px solid rgb(90, 1, 1)}
 }
 .btnAllRoom:hover{
+  transform: rotate(360deg);
   background-color: rgb(59, 57, 25);
   color: #dbd196;
 }
 .room{
+  cursor: cell;
   width: 20%;
   height: 200px;
   margin-left: 4%;
@@ -373,6 +390,7 @@
   color: blueviolet;
 }
 .container{
+  display: none;
     padding: 0;
     margin-left: auto;
     margin-right: auto;
@@ -1371,18 +1389,16 @@ background-repeat: no-repeat;
     75%  {transform: rotate(0deg)}
     100% {transform: rotate(360deg)}
   }
-  .nameRoomInfo{
+  .InfoAboutRoom{
+    display: flex;
     rotate: 0deg;
-    background-color: #302a0c;
-    color: rgb(223, 218, 153);
-    width: 37%;
-    height: 50px;
-    top: 8%;
-    left: 1px;
+    background-color: antiquewhite;
+    width: auto;
+    height:45px;
+    top: 8.3%;
+    left: 7px;
     position: absolute;
-    font-weight: bold;
-    cursor: cell;
-    border-radius: 5px;
-    font-size: 15.5px;
+    font-size: 29.2px;
+    z-index: 16;
   }
 }
