@@ -2,6 +2,16 @@
   margin: 0;
   padding: 0;
 }
+.nameRoomInfo{
+  rotate: 90deg;
+  background-color: antiquewhite;
+  width: auto;
+  height:auto;
+  bottom: 47%;
+  left: -330px;
+  position: absolute;
+  font-size: 50px;
+}
 .WindowRooms{
   display: none;
   position: fixed;
@@ -25,7 +35,6 @@
   cursor: cell;
   border-radius: 20px;
   font-size: 40px;
-  display: none;
 }
 .btnAllRoom:hover{
   background-color: rgb(59, 57, 25);
@@ -999,7 +1008,6 @@ background-repeat: no-repeat;
   cursor: cell;
   border-radius: 20px;
   font-size: 40px;
-  display: none;
 }
 .btnAllRoom:hover{
   background-color: rgb(59, 57, 25);

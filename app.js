@@ -4,6 +4,7 @@ let JZ=0
 let turn = 1
 let turn2 = 1
 let isYouTurn = true
+let nameRoomInfo = document.querySelector(".nameRoomInfo")
 let modal = document.getElementById("myModal")
 let btn = document.getElementById("myBtn")
 let btnAllRoom = document.getElementById("btnAllRoom")
@@ -36,6 +37,7 @@ let finish = []
 let j = []
 let check
 let checkClassRooms
+btnAllRoom.innerHTML = "Выбрать игровую комнату";
  const socket = new WebSocket("wss://okaiya.herokuapp.com/ws/");
  
  socket.onopen = () => {
@@ -58,9 +60,9 @@ let checkClassRooms
         btnAllRoom.style.display = "none"
         information1.style.display = "flex"
         WindowRooms.style.display = "none"
-        fishkas2[0].style.backgroundColor = "Cyan"
-         fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
-         fishkas2[0].style.border= "5px solid Blue"
+      fishkas2[0].style.backgroundColor = "Cyan"
+      fishkas2[0].style.boxShadow = `0 0 2px Cyan, 0 0 10px Cyan`
+      fishkas2[0].style.border= "5px solid Blue"
          
       }
       if(msg.event === "login"){
@@ -195,7 +197,6 @@ for (let i=0; i<4; i++) {
 }
 
 btnAllRoom.onclick = function(){
-      console.log("dasadsdadsa")
       WindowRooms.style.display = "block"
       if(isRooms){
       for(i=0; i<9; i++){
@@ -203,7 +204,7 @@ btnAllRoom.onclick = function(){
          room.classList.add("room")
          room.classList.add(`room${i}`)
          WindowRooms.appendChild(room)
-         room.innerHTML = `Это комната ${i+1}`;
+         room.innerHTML = `${i+1}`;
          Rooms.push(room)
          rowsRooms[rowCount2].appendChild(Rooms[i])
          if(i==2 || i==5){   
@@ -220,12 +221,12 @@ btnAllRoom.onclick = function(){
          for(i=0; i<9; i++){
        if(checkClassRooms[1] == `room${i}`){
          try{
-            console.log("adsdasd")
+            nameRoomInfo.innerHTML = `Сейчас вы находись в комнате №${i+1}`
             socket.send(JSON.stringify({
       
             event: "join-room",
             data: {
-               "roomNumber": i
+               "roomNumber": i+1
            }            
        }))}catch(err){
          console.log(err)
@@ -267,27 +268,24 @@ else if(isDarkSide){
 }
 }
 
-btnAllRoom.style.display = "block"
-
 btnLang.onclick = function (){
 start.style.display = "none"
 author.style.display = "none"
    if(!isRu){
    isRu = true
+   btnAllRoom.innerHTML = "Выбрать игровую комнату (определитесь с языком)"
 information1.style.display = "none"
 information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
 information5.style.display = "none"
 information6.style.display = "none"
-btnAllRoom.style.display = "none"
 information1=document.querySelector(".information1")
 information2=document.querySelector(".information2")
 information3=document.querySelector(".information3")
 information4=document.querySelector(".information4")
 information5=document.querySelector(".information5")
 information6=document.querySelector(".information6")
-btnAllRoom = document.getElementById("btnAllRoom")
 if(isDraw){
    information6.style.display = "flex"
    information1.style.display = "none" 
@@ -299,7 +297,6 @@ if(isDraw){
    AnimationWinSecond2.style.display = "none" 
 }
 if((nowTurn==1 || nowTurn==0)&& !isWin){
-   btnAllRoom.style.display = "block"
    information1.style.display = "flex" 
 }
 if(nowTurn==2 && isWin==false){
@@ -329,13 +326,13 @@ author.style.display = "inline"
    }
    else{
       isRu=false
+      btnAllRoom.innerHTML = "Choose Gaming Room"
 information1.style.display = "none"
 information2.style.display = "none"
 information3.style.display = "none"
 information4.style.display = "none"
 information5.style.display = "none"
 information6.style.display = "none"
-btnAllRoom.style.display = "none"
 information1=document.querySelector(".information1eng")
 information2=document.querySelector(".information2eng")
 information3=document.querySelector(".information3eng")
@@ -353,8 +350,7 @@ if(isDraw){
    AnimationWinFirst2.style.display = "none"
 }
 if((nowTurn==1 || nowTurn==0) && !isWin){
-   btnAllRoom.style.display = "block"
-   information1.style.display = "flex" 
+  // information1.style.display = "flex" 
 }
 if(nowTurn==2 && !isWin){
    information2.style.display = "flex" 
@@ -383,6 +379,13 @@ start.style.display = "inline"
 author.style.display = "inline"
    }
 }
+
+setInterval(function(){
+   socket.send(JSON.stringify({       
+      event: "login"      
+   }))
+}, 30000);
+
 
 
  function Times1() {
