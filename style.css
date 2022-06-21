@@ -1392,13 +1392,27 @@ background-repeat: no-repeat;
   .InfoAboutRoom{
     display: flex;
     rotate: 0deg;
-    background-color: antiquewhite;
-    width: auto;
-    height:45px;
-    top: 8.3%;
-    left: 7px;
+    background-color: #dddbcf;
+    width: 37%;
+    height:43px;
+    top: 8.5%;
+    left: 2px;
     position: absolute;
-    font-size: 29.2px;
-    z-index: 16;
+    font-size: 20px;
   }
+}
+@media (max-width:410px){
+  .information1{
+    font-size: 16px;
+  }
+  .information2{
+    font-size: 16px;
+  }
+  .information1eng{
+    font-size: 16px;
+  }
+  .information2eng{
+    font-size: 16px;
+  }
+
 }
