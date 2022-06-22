@@ -513,7 +513,7 @@ for(i=0; i<8; i++){
        fishkas2.push(fishka)  
        fishka.classList.add("fishka2")
        body.appendChild(fishka) 
-       console.log("adada")
+      // console.log("adada")
            }
        else{
          // const fishka = document.createElement("div")

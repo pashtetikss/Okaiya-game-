@@ -1435,6 +1435,15 @@ background-repeat: no-repeat;
     75%  {transform: rotate(0deg)}
     100% {transform: rotate(360deg)}
   }
+  .InfoAboutQueue{
+    rotate: 0deg;
+    background-color: #dddbcf;
+    height:30px;
+    top: 87%;
+    right: 2px;
+    position: absolute;
+    font-size: 20px;
+ }
   .InfoAboutRoom{
     display: none;
     rotate: 0deg;
@@ -1445,6 +1454,17 @@ background-repeat: no-repeat;
     left: 2px;
     position: absolute;
     font-size: 20px;
+  }
+  .InfoAboutAllPeopleInRoom{
+    display: none;
+    width: auto;
+    height: 50px;
+    background-color: #dbd196;
+    position: absolute;
+    top: 70%;
+    left: 1%;
+    font-size: 28px;
+  
   }
   .btnSurrender{
     background-color: #dbd196;
