@@ -2,6 +2,28 @@
   margin: 0;
   padding: 0;
 }
+.InfoAboutAllPeopleInRoom{
+  display: none;
+  width: auto;
+  height: 50px;
+  background-color: antiquewhite;
+  position: absolute;
+  top: 70%;
+  left: 34%;
+  font-size: 48px;
+
+}
+.InfoAboutQueue{
+   display: flex;
+  rotate: 0deg;
+  background-color: antiquewhite;
+  width: auto;
+  height:auto;
+  bottom: 11%;
+  right: 7px;
+  position: absolute;
+  font-size: 50px;
+}
 .btnSurrender{
   display: none;
   position: absolute;

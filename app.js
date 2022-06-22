@@ -4,6 +4,8 @@ let JZ=0
 let turn = 1
 let turn2 = 1
 let isYouTurn = true
+let InfoAboutAllPeopleInRoom= document.querySelector(".InfoAboutAllPeopleInRoom")
+let InfoAboutQueue = document.querySelector(".InfoAboutQueue")
 let InfoAboutRoom = document.querySelector(".InfoAboutRoom")
 let numberRoomInfo = document.querySelector(".numberRoomInfo")
 let nameRoomInfo = document.querySelector(".nameRoomInfo")
@@ -42,7 +44,7 @@ let check
 let checkClassRooms
 let YouInGame = false
 btnAllRoom.innerHTML = "Выбрать игровую комнату";
- const socket = new WebSocket("wss://okaiya.herokuapp.com/ws/");
+ const socket = new WebSocket("wss://av-services-api.herokuapp.com/okaiya/gateway");
  
  socket.onopen = () => {
    socket.send(JSON.stringify({       
@@ -55,11 +57,20 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
    try {
       //console.log(res.data)
       const msg = JSON.parse(res.data)
+      if(msg.event === "new-user-joined"){
+         InfoAboutAllPeopleInRoom.style.display = "block"
+         if(isRu){InfoAboutAllPeopleInRoom.innerHTML = "Оба игрока подключились"}
+         else if(!isRu){InfoAboutAllPeopleInRoom.innerHTML = "Both players are connected"}
+         for(i=0;i<16;i++){
+            j.push(1)
+            }
+      }
       if(msg.event === "join-room"){
         // finish = msg.data.board
         // CreateBoard(finish)
         container.style.display = "block"
-        console.log(msg.data)
+        console.log(msg.data.playersInRoom)  // Ждем пока тоха сервер задеплоит
+        CreateInfoQueue(msg.data.playersInRoom)  
         finish = msg.data.board
         CreateBoard(finish)
         btnAllRoom.style.display = "none"
@@ -71,7 +82,8 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
          YouInGame =true
          InfoAboutRoom.style.display = "flex"
          btnSurrender.style.display = "block"
-         btnSurrender.innerHTML = "Сдаться"
+         if(isRu){btnSurrender.innerHTML = "Сдаться" }
+         else if(!isRu){ btnSurrender.innerHTML = "Surrender"}
          
       }
       if(msg.event === "login"){
@@ -199,6 +211,33 @@ for (let i=0; i<4; i++) {
    rows.push(row)
 }
 
+function CreateInfoQueue(msge){
+   InfoAboutAllPeopleInRoom.style.display = "block"
+   if(msge==1 && isRu){
+      InfoAboutQueue.innerHTML = "Вы первый игрок"
+      InfoAboutAllPeopleInRoom.innerHTML = "Вы находитесь в комнате один"
+   }
+  else if(msge==2 && isRu){
+      InfoAboutQueue.innerHTML = "Вы второй игрок"
+      InfoAboutAllPeopleInRoom.innerHTML = "Оба игрока подключились"
+      for(i=0;i<16;i++){
+         j.push(0)
+         }
+   }
+   else if(msge==1 && !isRu){
+      InfoAboutQueue.innerHTML = "You are the first player"
+      InfoAboutAllPeopleInRoom.innerHTML = "You are alone in the room"
+   }
+   else if(msge==2 && !isRu){
+      InfoAboutQueue.innerHTML = "You are the second player"
+      InfoAboutAllPeopleInRoom.innerHTML = "Both players are connected"
+      for(i=0;i<16;i++){
+         j.push(0)
+         }
+   }
+
+}
+
 btnAllRoom.onclick = function(){
       WindowRooms.style.display = "block"
       if(isRooms){
@@ -265,6 +304,7 @@ if(!isDarkSide){
    AnimationWinSecond2.style.backgroundColor = "#383525"
    container.style.backgroundColor = "#dbd196"
    InfoAboutRoom.style.backgroundColor = "#dbd196"
+   InfoAboutQueue.style.backgroundColor = "#dbd196"
    isDarkSide = true
 }
 else if(isDarkSide){
@@ -276,6 +316,7 @@ else if(isDarkSide){
    AnimationWinSecond2.style.backgroundColor = "white"
    container.style.backgroundColor = "antiquewhite"
    InfoAboutRoom.style.backgroundColor = "antiquewhite"
+   InfoAboutQueue.style.backgroundColor = "antiquewhite"
    isDarkSide = false
 }
 }
@@ -312,6 +353,7 @@ if(isDraw){
 if((nowTurn==1 || nowTurn==0)&& !isWin && YouInGame){
    nameRoomInfo.innerHTML = "Комната "
    information1.style.display = "flex" 
+   InfoAboutAllPeopleInRoom.innerHTML = "Оба игрока подключились"
 }
 if(nowTurn==2 && isWin==false){
    information2.style.display = "flex" 
@@ -367,6 +409,7 @@ if(isDraw){
 if((nowTurn==1 || nowTurn==0) && !isWin && YouInGame){
    nameRoomInfo.innerHTML = "Room "
    information1.style.display = "flex" 
+   InfoAboutAllPeopleInRoom.innerHTML = "Both players are connected"
 }
 if(nowTurn==2 && !isWin){
    information2.style.display = "flex" 
@@ -551,11 +594,6 @@ function delete2(){
          fishkas1[i].style.border= "5px solid MediumVioletRed"
       } 
    } 
-}
-
-
-for(i=0;i<16;i++){
-j.push(1)
 }
 
   const array = [] 
@@ -1412,7 +1450,10 @@ function checkFinish(turn){
       }
    }  
    first=0
-   finishend(turn) 
+   finishend(turn)
+   if(turn==2){
+      InfoAboutAllPeopleInRoom.style.display = "none"
+   } 
    if(turn==17){
       isDraw = true
       clearInterval(times2)
