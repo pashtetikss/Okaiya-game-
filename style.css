@@ -2,6 +2,23 @@
   margin: 0;
   padding: 0;
 }
+.btnSurrender{
+  display: none;
+  position: absolute;
+  left: 50px;
+  top: 20px;
+  background-color: #dbd196;
+  color: rgb(59, 57, 25);
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btnSurrender:hover{
+  background-color: rgb(59, 57, 25);
+  color: #dbd196;
+}
 .InfoAboutRoom{
   display: flex;
   rotate: 0deg;
@@ -12,9 +29,6 @@
   left: 7px;
   position: absolute;
   font-size: 50px;
-}
-.nameRoomInfo{
-  
 }
 .WindowRooms{
   display: none;
@@ -465,7 +479,7 @@ footer{
   color: rgb(59, 57, 25);
   width: 200px;
   height: 40px;
-  top: 50px;
+  top: 70px;
   left: 50px;
   position: absolute;
   font-weight: bold;
@@ -481,7 +495,7 @@ footer{
   color: rgb(59, 57, 25);
   width: 200px;
   height: 40px;
-  top: 50px;
+  top: 70px;
   left: 50px;
   position: absolute;
   font-weight: bold;
@@ -1347,7 +1361,7 @@ background-repeat: no-repeat;
     background-color: #dbd196;
     color: rgb(59, 57, 25);
     width: 37%;
-    height: 45px;
+    height: 50px;
     top: 57px;
     right: 1px;
     position: absolute;
@@ -1404,11 +1418,24 @@ background-repeat: no-repeat;
     rotate: 0deg;
     background-color: #dddbcf;
     width: 37%;
-    height:43px;
-    top: 8.5%;
+    height:30px;
+    top: 87%;
     left: 2px;
     position: absolute;
     font-size: 20px;
+  }
+  .btnSurrender{
+    background-color: #dbd196;
+    color: rgb(59, 57, 25);
+    width: 37%;
+    height: 50px;
+    top: 56px;
+    left: 1px;
+    position: absolute;
+    font-weight: bold;
+    cursor: cell;
+    border-radius: 5px;
+    display: none;
   }
 }
 @media (max-width:410px){

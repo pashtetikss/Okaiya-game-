@@ -34,6 +34,7 @@ const AnimationWinSecond = document.querySelector(".winSecondEnd")
 const AnimationWinSecond2 = document.querySelector(".winSecondEnd2")
 const darkSide = document.querySelector(".darkSide")
 const footer = document.querySelector("footer")
+const btnSurrender = document.querySelector(".btnSurrender")
 //let introdution
 let finish = []
 let j = []
@@ -69,6 +70,8 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
       fishkas2[0].style.border= "5px solid Blue"
          YouInGame =true
          InfoAboutRoom.style.display = "flex"
+         btnSurrender.style.display = "block"
+         btnSurrender.innerHTML = "Сдаться"
          
       }
       if(msg.event === "login"){
@@ -164,12 +167,6 @@ btnAllRoom.innerHTML = "Выбрать игровую комнату";
    
  }
  
-//introdution = prompt("Имя введи", "default");
-setTimeout(() => {
-   console.log(finish[0])
-}, 1700)
-//let fric = Array.isArray(finish)
-//console.log(fric)
 let nowTurn = 0
 
 let times1
@@ -301,6 +298,7 @@ information3=document.querySelector(".information3")
 information4=document.querySelector(".information4")
 information5=document.querySelector(".information5")
 information6=document.querySelector(".information6")
+btnSurrender.innerHTML = "Сдаться"
 if(isDraw){
    information6.style.display = "flex"
    information1.style.display = "none" 
@@ -355,6 +353,7 @@ information3=document.querySelector(".information3eng")
 information4=document.querySelector(".information4eng")
 information5=document.querySelector(".information5eng")
 information6=document.querySelector(".information6eng")
+btnSurrender.innerHTML = "Surrender"
 if(isDraw){
    information6.style.display = "flex"
    information1.style.display = "none" 
@@ -485,8 +484,42 @@ for(i=0; i<8; i++){
 
 let d = -1
 let d2 = -1
+let joke = 0
 
-
+btnSurrender.onclick = function(){
+   if(joke==0 && isRu){
+      btnSurrender.innerHTML = "Нажми еще раз"
+      joke++
+   }
+   else if(joke==0 && !isRu){
+      btnSurrender.innerHTML = "Click again"
+      joke++
+   }
+   else if(joke==1 && isRu){
+      btnSurrender.innerHTML = "Ну и зачем?"
+      joke++
+   }
+   else if(joke==1 && !isRu){
+      btnSurrender.innerHTML = "What are you doing?"
+      joke++
+   }
+   else if(joke==2 && isRu){
+      btnSurrender.innerHTML = "Одумайся и доиграй партию"
+      joke++
+   }
+   else if(joke==2 && !isRu){
+      btnSurrender.innerHTML = "Play the game to the end"
+      joke++
+   }
+   else if(joke==3 && isRu){
+      btnSurrender.innerHTML = "Хватит, сдаться нельзя"
+      joke=0
+   }
+   else if(joke==3 && !isRu){
+      btnSurrender.innerHTML = "You can't give up"
+      joke=0
+   }
+}
 
 function delete1(){
    nowTurn = 1
@@ -1579,6 +1612,3 @@ else if(turn2==17){
    information6.style.display = "flex" 
 } 
 } 
-
-
-
